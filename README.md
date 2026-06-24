@@ -26,7 +26,6 @@ To evaluate the **Role-Based Access Control (RBAC)** features and highly interac
 
 | Portal Role | Email | Password | Dedicated Portal Features |
 | :--- | :--- | :--- | :--- |
-| 🎓 **Personal Student Account** | `upv5603@gmail.com` | `password123` | Active courses, schedule timetable, digital library, clubs, financial aid |
 | 🎓 **Demo Student** | `student@demo.com` | `student123` | Enrolled course schedule, academic profile card, real-time grades |
 | 👨‍🏫 **Faculty Teacher** | `teacher1@demo.com` | `teacher123` | Assigned classes, attendance tracker, office hours, research grants |
 | 🛡️ **System Administrator** | `admin@demo.com` | `admin123` | System metrics, user governance, curriculum orchestration, audit logs |
