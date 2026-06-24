@@ -34,7 +34,7 @@
             }
         </script>
     </head>
-    <body class="font-sans text-gray-100 antialiased bg-gray-950 min-h-screen flex flex-col justify-center items-center p-6 relative overflow-hidden">
+    <body class="font-sans text-gray-100 antialiased bg-gray-950 min-h-screen flex flex-col justify-center items-center p-6 relative overflow-x-hidden overflow-y-auto">
         <!-- Abstract Shapes -->
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary-600/10 rounded-full blur-3xl pointer-events-none"></div>
         

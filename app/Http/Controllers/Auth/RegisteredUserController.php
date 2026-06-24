@@ -40,6 +40,22 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => 'student',
+        ]);
+
+        \App\Models\Student::create([
+            'user_id' => $user->id,
+            'fName' => explode(' ', $request->name)[0],
+            'lName' => count(explode(' ', $request->name)) > 1 ? explode(' ', $request->name)[1] : 'Scholar',
+            'studentId' => 'LUMINA-' . rand(10000, 99999),
+            'email' => $request->email,
+            'course' => 'BSc in Advanced Technologies',
+            'age' => 20,
+            'gender' => (rand(1, 2) == 1) ? 'Female' : 'Male',
+            'city' => 'Metropolis',
+            'province' => 'Global Campus',
+            'enrolled' => 'Enrolled',
+            'studentImage' => 'default.png',
         ]);
 
         event(new Registered($user));

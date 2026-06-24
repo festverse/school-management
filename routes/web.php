@@ -36,7 +36,7 @@ Route::get('/dashboard', function () {
     if ($role === 'admin') return redirect()->route('admin.dashboard');
     if ($role === 'teacher') return redirect()->route('teacher.dashboard');
     return redirect()->route('student.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 // Admin Routes
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
