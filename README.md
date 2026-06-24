@@ -18,7 +18,7 @@ A production-grade, full-stack Laravel web application engineered to demonstrate
 ---
 
 ## 🔴 Live Demo
-* **Web Portal:** [Deploying via Render](#) *(Insert your Render URL here once live)*
+* **Web Portal:** [https://school-management-1-hqy0.onrender.com](https://school-management-1-hqy0.onrender.com)
 * **API Endpoints:** `/api/students`, `/api/courses`, `/api/departments`
 
 ### 🔑 Quick Demo Credentials for Recruiters
