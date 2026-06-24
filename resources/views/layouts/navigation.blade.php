@@ -45,22 +45,25 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <div class="bg-gray-900 border border-gray-700 rounded-xl shadow-2xl overflow-hidden">
-                            <x-dropdown-link :href="route('profile.edit')" class="text-gray-300 hover:bg-gray-800 hover:text-white transition">
-                                {{ __('Profile') }}
-                            </x-dropdown-link>
+                        <x-dropdown-link :href="route('dashboard')" class="text-gray-300 hover:bg-gray-800 hover:text-white transition font-medium">
+                            {{ __('My Dashboard') }}
+                        </x-dropdown-link>
 
-                            <!-- Authentication -->
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
+                        <x-dropdown-link :href="route('profile.edit')" class="text-gray-300 hover:bg-gray-800 hover:text-white transition font-medium">
+                            {{ __('Account Profile') }}
+                        </x-dropdown-link>
 
-                                <x-dropdown-link :href="route('logout')"
-                                        onclick="event.preventDefault();
-                                                    this.closest('form').submit();" class="text-red-400 hover:bg-gray-800 hover:text-red-300 transition">
-                                    {{ __('Log Out') }}
-                                </x-dropdown-link>
-                            </form>
-                        </div>
+                        <x-dropdown-link :href="route('academics')" class="text-gray-300 hover:bg-gray-800 hover:text-white transition font-medium">
+                            {{ __('Academics Catalog') }}
+                        </x-dropdown-link>
+
+                        <x-dropdown-link :href="route('contact')" class="text-gray-300 hover:bg-gray-800 hover:text-white transition font-medium">
+                            {{ __('Help & Support') }}
+                        </x-dropdown-link>
+
+                        <x-dropdown-link :href="url('/')" class="text-gray-300 hover:bg-gray-800 hover:text-white transition font-medium border-t border-gray-800">
+                            {{ __('Main Home') }}
+                        </x-dropdown-link>
                     </x-slot>
                 </x-dropdown>
 
