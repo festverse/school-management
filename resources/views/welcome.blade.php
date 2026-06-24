@@ -58,8 +58,8 @@
                     <span class="font-display font-bold text-2xl tracking-tight text-white">Lumina University</span>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Academics</a>
-                    <a href="#" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Admissions</a>
+                    <a href="{{ route('academics') }}" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Academics</a>
+                    <a href="{{ route('admissions') }}" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Admissions</a>
                     <a href="#student-directory" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Student Directory</a>
                     
                     <div class="h-6 w-px bg-gray-700"></div>
@@ -98,10 +98,10 @@
                 A modern, comprehensive academic ecosystem designed to foster innovation, connectivity, and excellence among students and faculty.
             </p>
             <div class="flex justify-center gap-4">
-                <a href="#explore" class="px-8 py-4 text-base font-semibold text-white bg-primary-600 rounded-full hover:bg-primary-500 transition-all shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 hover:-translate-y-1">
+                <a href="{{ route('academics') }}" class="px-8 py-4 text-base font-semibold text-white bg-primary-600 rounded-full hover:bg-primary-500 transition-all shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 hover:-translate-y-1">
                     Explore Programs
                 </a>
-                <a href="#about" class="px-8 py-4 text-base font-semibold text-white bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-all backdrop-blur-md hover:-translate-y-1 hover:shadow-lg hover:shadow-white/10">
+                <a href="{{ route('virtual-tour') }}" class="px-8 py-4 text-base font-semibold text-white bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-all backdrop-blur-md hover:-translate-y-1 hover:shadow-lg hover:shadow-white/10">
                     Virtual Tour
                 </a>
             </div>
@@ -185,9 +185,9 @@
                 <span class="text-gray-400 font-medium">© 2026 Lumina University. All rights reserved.</span>
             </div>
             <div class="flex gap-6">
-                <a href="#" class="text-gray-500 hover:text-white transition-colors">Privacy Policy</a>
-                <a href="#" class="text-gray-500 hover:text-white transition-colors">Terms of Service</a>
-                <a href="#" class="text-gray-500 hover:text-white transition-colors">Contact Support</a>
+                <a href="{{ route('privacy') }}" class="text-gray-500 hover:text-white transition-colors">Privacy Policy</a>
+                <a href="{{ route('terms') }}" class="text-gray-500 hover:text-white transition-colors">Terms of Service</a>
+                <a href="{{ route('contact') }}" class="text-gray-500 hover:text-white transition-colors">Contact Support</a>
             </div>
         </div>
     </footer>

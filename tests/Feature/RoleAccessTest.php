@@ -75,4 +75,25 @@ class RoleAccessTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Teacher Dashboard');
     }
+
+    public function test_public_can_view_academics_page(): void
+    {
+        Department::create(['name' => 'College of Advanced Sciences']);
+        $response = $this->get('/academics');
+        $response->assertStatus(200);
+        $response->assertSee('College of Advanced Sciences');
+    }
+
+    public function test_public_can_view_admissions_and_virtual_tour(): void
+    {
+        $this->get('/admissions')->assertStatus(200)->assertSee('Your Journey Begins Here');
+        $this->get('/virtual-tour')->assertStatus(200)->assertSee('Immersive Campus Architecture');
+    }
+
+    public function test_public_can_view_legal_and_contact_pages(): void
+    {
+        $this->get('/privacy-policy')->assertStatus(200)->assertSee('Privacy Policy');
+        $this->get('/terms-of-service')->assertStatus(200)->assertSee('Terms of Service');
+        $this->get('/contact-support')->assertStatus(200)->assertSee('Contact Support');
+    }
 }

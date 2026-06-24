@@ -23,6 +23,13 @@ Route::get('/search-welcome', function (\Illuminate\Http\Request $request) {
     return view('welcome', compact('students'));
 })->name('search-welcome');
 
+Route::get('/academics', [AddstudentController::class, 'showAcademics'])->name('academics');
+Route::get('/admissions', function () { return view('admissions'); })->name('admissions');
+Route::get('/virtual-tour', function () { return view('virtual-tour'); })->name('virtual-tour');
+Route::get('/privacy-policy', function () { return view('privacy'); })->name('privacy');
+Route::get('/terms-of-service', function () { return view('terms'); })->name('terms');
+Route::get('/contact-support', function () { return view('contact'); })->name('contact');
+
 // Dynamic Dashboard Redirect based on Role
 Route::get('/dashboard', function () {
     $role = auth()->user()->role;

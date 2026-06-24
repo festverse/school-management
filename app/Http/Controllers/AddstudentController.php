@@ -212,6 +212,12 @@ class AddstudentController extends Controller
         return view('welcome', compact('students'));
     }
 
+    public function showAcademics()
+    {
+        $departments = \App\Models\Department::with('courses')->get();
+        return view('academics', compact('departments'));
+    }
+
 
 
     /**
