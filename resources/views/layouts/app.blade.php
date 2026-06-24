@@ -16,14 +16,14 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+    <body class="font-sans antialiased bg-gray-950 text-gray-100">
+        <div class="min-h-screen bg-gray-950 text-gray-100">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <header class="bg-gray-900/50 backdrop-blur-md border-b border-gray-800 shadow">
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-gray-100 font-semibold">
                         {{ $header }}
                     </div>
                 </header>
