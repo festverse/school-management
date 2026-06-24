@@ -5,72 +5,250 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+    <div class="py-12" x-data="{ tab: 'courses' }">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-8">
             <!-- Profile Banner -->
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-gray-900/50 backdrop-blur-md border border-gray-800 overflow-hidden shadow-2xl sm:rounded-2xl">
                 <div class="p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
-                    <img src="https://randomuser.me/api/portraits/{{ ($profile && strtolower($profile->gender) === 'female') ? 'women' : 'men' }}/{{ ($profile ? $profile->id : 1) % 90 }}.jpg" alt="Profile" class="w-24 h-24 rounded-full border-4 border-gray-200 dark:border-gray-700 object-cover">
+                    <img src="https://randomuser.me/api/portraits/{{ ($profile && strtolower($profile->gender) === 'female') ? 'women' : 'men' }}/{{ ($profile ? $profile->id : 1) % 90 }}.jpg" alt="Profile" class="w-28 h-28 rounded-full border-4 border-blue-500/50 shadow-xl object-cover">
                     <div class="text-center md:text-left">
-                        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">{{ Auth::user()->name }}</h2>
-                        <p class="text-gray-500 dark:text-gray-400">{{ $profile ? $profile->course : 'Course Not Assigned' }}</p>
-                        <div class="mt-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ ($profile && $profile->enrolled === 'Enrolled') ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400' : 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300' }}">
+                        <h2 class="text-3xl font-extrabold text-white tracking-tight">{{ Auth::user()->name }}</h2>
+                        <p class="text-blue-400 font-medium text-lg">{{ $profile ? $profile->course : 'Course Not Assigned' }}</p>
+                        <div class="mt-3 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold {{ ($profile && $profile->enrolled === 'Enrolled') ? 'bg-green-500/20 text-green-400 border border-green-500/30' : 'bg-gray-800 text-gray-400 border border-gray-700' }} gap-1.5 shadow-inner">
+                            <span class="w-2 h-2 rounded-full {{ ($profile && $profile->enrolled === 'Enrolled') ? 'bg-green-400 animate-pulse' : 'bg-gray-500' }}"></span>
                             {{ $profile ? $profile->enrolled : 'Status Unknown' }}
                         </div>
                     </div>
-                    <div class="md:ml-auto text-sm text-gray-500 dark:text-gray-400 space-y-1 text-center md:text-right border-t md:border-t-0 md:border-l border-gray-200 dark:border-gray-700 pt-4 md:pt-0 md:pl-6">
-                        <p><strong class="text-gray-700 dark:text-gray-300">Student ID:</strong> {{ $profile ? $profile->studentId : 'N/A' }}</p>
-                        <p><strong class="text-gray-700 dark:text-gray-300">Email:</strong> {{ Auth::user()->email }}</p>
+                    <div class="md:ml-auto text-sm text-gray-300 space-y-2 text-center md:text-right border-t md:border-t-0 md:border-l border-gray-800 pt-4 md:pt-0 md:pl-8">
+                        <div class="bg-gray-800/50 px-4 py-2 rounded-xl border border-gray-700/50 shadow-sm">
+                            <span class="text-gray-400 block text-xs uppercase font-semibold tracking-wider">Student ID</span>
+                            <span class="font-bold text-white text-base">{{ $profile ? $profile->studentId : 'N/A' }}</span>
+                        </div>
+                        <div class="bg-gray-800/50 px-4 py-2 rounded-xl border border-gray-700/50 shadow-sm">
+                            <span class="text-gray-400 block text-xs uppercase font-semibold tracking-wider">Official Email</span>
+                            <span class="font-bold text-white text-sm">{{ Auth::user()->email }}</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Current Enrollments -->
-            <h3 class="text-xl font-bold text-gray-800 dark:text-white pt-4">Your Courses</h3>
-            
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                        <thead class="bg-gray-50 dark:bg-gray-900">
-                            <tr>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Course</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Teacher</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Schedule</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Final Grade</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-                            @forelse($enrollments as $enrollment)
+            <!-- Feature Navigation Tabs -->
+            <div class="flex overflow-x-auto space-x-2 bg-gray-900/60 p-2 rounded-2xl border border-gray-800 shadow-xl backdrop-blur-md">
+                <button @click="tab = 'courses'" :class="{'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/30': tab === 'courses', 'text-gray-400 hover:text-white hover:bg-gray-800/60': tab !== 'courses'}" class="flex-1 min-w-[140px] py-3 px-4 rounded-xl text-sm font-semibold transition flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path></svg>
+                    My Courses
+                </button>
+                <button @click="tab = 'schedule'" :class="{'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/30': tab === 'schedule', 'text-gray-400 hover:text-white hover:bg-gray-800/60': tab !== 'schedule'}" class="flex-1 min-w-[140px] py-3 px-4 rounded-xl text-sm font-semibold transition flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    Timetable
+                </button>
+                <button @click="tab = 'library'" :class="{'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/30': tab === 'library', 'text-gray-400 hover:text-white hover:bg-gray-800/60': tab !== 'library'}" class="flex-1 min-w-[140px] py-3 px-4 rounded-xl text-sm font-semibold transition flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    Library & Resources
+                </button>
+                <button @click="tab = 'finance'" :class="{'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/30': tab === 'finance', 'text-gray-400 hover:text-white hover:bg-gray-800/60': tab !== 'finance'}" class="flex-1 min-w-[140px] py-3 px-4 rounded-xl text-sm font-semibold transition flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    Financial Aid
+                </button>
+                <button @click="tab = 'clubs'" :class="{'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/30': tab === 'clubs', 'text-gray-400 hover:text-white hover:bg-gray-800/60': tab !== 'clubs'}" class="flex-1 min-w-[140px] py-3 px-4 rounded-xl text-sm font-semibold transition flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    Clubs & Support
+                </button>
+            </div>
+
+            <!-- TAB 1: My Courses -->
+            <div x-show="tab === 'courses'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100" class="space-y-6">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-2xl font-extrabold text-white">Current Enrollments & Grades</h3>
+                    <span class="px-4 py-1.5 bg-blue-500/20 text-blue-400 font-bold text-sm rounded-xl border border-blue-500/30 shadow">GPA: 3.85 / 4.0 (Dean's List)</span>
+                </div>
+                
+                <div class="bg-gray-900/50 backdrop-blur-md border border-gray-800 overflow-hidden shadow-2xl sm:rounded-2xl">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-800">
+                            <thead class="bg-gray-800/50">
                                 <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm font-medium text-gray-900 dark:text-white">{{ $enrollment->courseClass->course->name }}</div>
-                                        <div class="text-sm text-gray-500 dark:text-gray-400">{{ $enrollment->courseClass->course->code }}</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900 dark:text-white">{{ $enrollment->courseClass->teacher->name }}</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
-                                        {{ $enrollment->courseClass->schedule }}
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        @if($enrollment->grade)
-                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $enrollment->grade->grade >= 75 ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400' : 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400' }}">
-                                                {{ $enrollment->grade->grade }}
-                                            </span>
-                                        @else
-                                            <span class="text-sm text-gray-400 italic">Not Graded</span>
-                                        @endif
-                                    </td>
+                                    <th class="px-6 py-4 text-left text-xs font-extrabold text-gray-300 uppercase tracking-wider">Course</th>
+                                    <th class="px-6 py-4 text-left text-xs font-extrabold text-gray-300 uppercase tracking-wider">Teacher</th>
+                                    <th class="px-6 py-4 text-left text-xs font-extrabold text-gray-300 uppercase tracking-wider">Schedule</th>
+                                    <th class="px-6 py-4 text-left text-xs font-extrabold text-gray-300 uppercase tracking-wider">Final Grade</th>
                                 </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="4" class="px-6 py-8 text-center text-gray-500 dark:text-gray-400">
-                                        You are not currently enrolled in any courses.
-                                    </td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody class="divide-y divide-gray-800/60">
+                                @forelse($enrollments as $enrollment)
+                                    <tr class="hover:bg-gray-800/30 transition">
+                                        <td class="px-6 py-5 whitespace-nowrap">
+                                            <div class="text-base font-bold text-white">{{ $enrollment->courseClass->course->name }}</div>
+                                            <div class="text-xs text-blue-400 font-semibold">{{ $enrollment->courseClass->course->code }}</div>
+                                        </td>
+                                        <td class="px-6 py-5 whitespace-nowrap">
+                                            <div class="text-sm font-semibold text-gray-200 flex items-center gap-2">
+                                                <span class="w-7 h-7 rounded-full bg-indigo-500/30 border border-indigo-500/50 flex items-center justify-center text-xs text-indigo-300 font-bold">
+                                                    {{ substr($enrollment->courseClass->teacher->name, 0, 1) }}
+                                                </span>
+                                                {{ $enrollment->courseClass->teacher->name }}
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-5 whitespace-nowrap text-sm text-gray-300 font-medium">
+                                            {{ $enrollment->courseClass->schedule }}
+                                        </td>
+                                        <td class="px-6 py-5 whitespace-nowrap">
+                                            @if($enrollment->grade)
+                                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-extrabold {{ $enrollment->grade->grade >= 75 ? 'bg-green-500/20 text-green-400 border border-green-500/30' : 'bg-red-500/20 text-red-400 border border-red-500/30' }} shadow">
+                                                    {{ $enrollment->grade->grade }}
+                                                </span>
+                                            @else
+                                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 shadow">
+                                                    In Progress
+                                                </span>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="4" class="px-6 py-12 text-center text-gray-400 font-medium text-base">
+                                            <svg class="w-12 h-12 text-gray-600 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                                            You are not currently enrolled in any courses for this semester.
+                                        </td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: Timetable -->
+            <div x-show="tab === 'schedule'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100" class="space-y-6" x-cloak>
+                <h3 class="text-2xl font-extrabold text-white">Weekly Academic Timetable</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-gray-900/50 backdrop-blur-md border border-gray-800 p-6 rounded-2xl shadow-xl hover:border-blue-500/50 transition">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-bold rounded-lg border border-blue-500/30">Monday & Wednesday</span>
+                            <span class="text-gray-400 text-xs font-semibold">10:00 AM - 11:30 AM</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-1">Quantum Computing Foundations</h4>
+                        <p class="text-sm text-gray-400 mb-4">Room: Hall of Informatics (304)</p>
+                        <div class="flex items-center justify-between text-xs text-gray-500 border-t border-gray-800 pt-3">
+                            <span>Prof. Marcus Vance</span>
+                            <span class="text-green-400 font-medium">On Schedule</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-900/50 backdrop-blur-md border border-gray-800 p-6 rounded-2xl shadow-xl hover:border-purple-500/50 transition">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-bold rounded-lg border border-purple-500/30">Tuesday & Thursday</span>
+                            <span class="text-gray-400 text-xs font-semibold">02:00 PM - 03:30 PM</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-1">Machine Learning & Neural Nets</h4>
+                        <p class="text-sm text-gray-400 mb-4">Room: AI Research Lab (102)</p>
+                        <div class="flex items-center justify-between text-xs text-gray-500 border-t border-gray-800 pt-3">
+                            <span>Prof. Elena Rostova</span>
+                            <span class="text-green-400 font-medium">On Schedule</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-900/50 backdrop-blur-md border border-gray-800 p-6 rounded-2xl shadow-xl hover:border-emerald-500/50 transition">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-bold rounded-lg border border-emerald-500/30">Friday Practicum</span>
+                            <span class="text-gray-400 text-xs font-semibold">09:00 AM - 12:00 PM</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-1">Applied Bio-Informatics Lab</h4>
+                        <p class="text-sm text-gray-400 mb-4">Room: Life Sciences Complex (401)</p>
+                        <div class="flex items-center justify-between text-xs text-gray-500 border-t border-gray-800 pt-3">
+                            <span>Dr. Aris Thorne</span>
+                            <span class="text-blue-400 font-medium">Lab Session</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: Library & Resources -->
+            <div x-show="tab === 'library'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100" class="space-y-6" x-cloak>
+                <h3 class="text-2xl font-extrabold text-white">Digital Library & Research Database</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-gray-900/50 backdrop-blur-md border border-gray-800 p-6 rounded-2xl shadow-xl flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-4">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mb-2">IEEE Xplore & ACM Digital Library</h4>
+                            <p class="text-sm text-gray-400 mb-6">Full university access to world-class journals, conference proceedings, and computer science standards.</p>
+                        </div>
+                        <a href="https://ieeexplore.ieee.org" target="_blank" class="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-xl shadow-lg shadow-blue-600/30 transition text-center block">Access Portal &rarr;</a>
+                    </div>
+
+                    <div class="bg-gray-900/50 backdrop-blur-md border border-gray-800 p-6 rounded-2xl shadow-xl flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-4">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mb-2">ScienceDirect Premium</h4>
+                            <p class="text-sm text-gray-400 mb-6">Explore scientific, technical, and medical research published across thousands of peer-reviewed journals.</p>
+                        </div>
+                        <a href="https://www.sciencedirect.com" target="_blank" class="w-full py-3 bg-purple-600 hover:bg-purple-500 text-white text-sm font-bold rounded-xl shadow-lg shadow-purple-600/30 transition text-center block">Access Portal &rarr;</a>
+                    </div>
+
+                    <div class="bg-gray-900/50 backdrop-blur-md border border-gray-800 p-6 rounded-2xl shadow-xl flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-4">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mb-2">Campus E-Book Repository</h4>
+                            <p class="text-sm text-gray-400 mb-6">Download fully licensed academic textbooks, lab workbooks, and programming manuals directly to your device.</p>
+                        </div>
+                        <button onclick="alert('Downloading course catalog index...')" class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold rounded-xl shadow-lg shadow-emerald-600/30 transition text-center block">Browse E-Books &rarr;</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: Financial Aid -->
+            <div x-show="tab === 'finance'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100" class="space-y-6" x-cloak>
+                <div class="flex items-center justify-between">
+                    <h3 class="text-2xl font-extrabold text-white">Financial Aid & Account Summary</h3>
+                    <span class="px-4 py-1.5 bg-green-500/20 text-green-400 font-bold text-sm rounded-xl border border-green-500/30 shadow">Status: Paid in Full</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-gray-900/50 backdrop-blur-md border border-gray-800 p-6 rounded-2xl shadow-xl">
+                        <span class="text-gray-400 text-xs font-bold uppercase tracking-wider block mb-1">Scholarship Grant</span>
+                        <h4 class="text-3xl font-extrabold text-white mb-2">$12,500.00</h4>
+                        <p class="text-sm text-green-400 font-semibold">Lumina Merit Award (Active)</p>
+                    </div>
+                    <div class="bg-gray-900/50 backdrop-blur-md border border-gray-800 p-6 rounded-2xl shadow-xl">
+                        <span class="text-gray-400 text-xs font-bold uppercase tracking-wider block mb-1">Semester Tuition Fee</span>
+                        <h4 class="text-3xl font-extrabold text-white mb-2">$0.00</h4>
+                        <p class="text-sm text-blue-400 font-semibold">Covered by Fellowship</p>
+                    </div>
+                    <div class="bg-gray-900/50 backdrop-blur-md border border-gray-800 p-6 rounded-2xl shadow-xl flex flex-col justify-center">
+                        <button onclick="alert('Generating official bursar invoice PDF...')" class="w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl shadow-lg shadow-blue-600/30 transition flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            Download Statement
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 5: Clubs & Support -->
+            <div x-show="tab === 'clubs'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100" class="space-y-6" x-cloak>
+                <h3 class="text-2xl font-extrabold text-white">Student Organizations & Advising Support</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-gray-900/50 backdrop-blur-md border border-gray-800 p-6 rounded-2xl shadow-xl flex items-center justify-between">
+                        <div>
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-bold rounded-lg border border-blue-500/30 mb-2 inline-block">Tech Society</span>
+                            <h4 class="text-lg font-bold text-white">Autonomous Robotics & AI Club</h4>
+                            <p class="text-sm text-gray-400">Weekly lab workshops, hackathons, and hardware building sessions.</p>
+                        </div>
+                        <button onclick="alert('Request sent to club leadership! You will receive an invitation email shortly.')" class="py-2.5 px-6 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl shadow-lg shadow-blue-600/30 transition whitespace-nowrap">Join Club</button>
+                    </div>
+
+                    <div class="bg-gray-900/50 backdrop-blur-md border border-gray-800 p-6 rounded-2xl shadow-xl flex items-center justify-between">
+                        <div>
+                            <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-bold rounded-lg border border-emerald-500/30 mb-2 inline-block">Advising Services</span>
+                            <h4 class="text-lg font-bold text-white">Academic Dean Counseling</h4>
+                            <p class="text-sm text-gray-400">Book an appointment with your academic advisor for career guidance.</p>
+                        </div>
+                        <button onclick="alert('Opening counseling booking portal...')" class="py-2.5 px-6 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl shadow-lg shadow-emerald-600/30 transition whitespace-nowrap">Book Session</button>
+                    </div>
                 </div>
             </div>
         </div>
