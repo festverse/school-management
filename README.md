@@ -1,3 +1,5 @@
+<div align="center">
+
 # 🎓 Lumina University Management System
 
 ![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php&logoColor=white)
@@ -6,6 +8,8 @@
 ![Alpine.js](https://img.shields.io/badge/Alpine.js-8BC0D0?style=for-the-badge&logo=alpinelinux&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+
+</div>
 
 A production-grade, full-stack Laravel web application engineered to demonstrate complex relational database modeling, strict Role-Based Access Control (RBAC), robust MVC architecture, decoupled RESTful API endpoints, and a premium modern UI/UX design.
 
