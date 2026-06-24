@@ -92,3 +92,9 @@ The included `Dockerfile` and `start.sh` startup script are fully optimized for 
 1. Connect your GitHub repository as a **New Web Service**.
 2. Select the **Docker** runtime environment.
 3. Click **Deploy**. The container will automatically self-configure, migrate, and seed in the cloud!
+
+---
+
+## 📄 License
+
+© 2026 [Utsav Vasava](https://festverse.in). All Rights Reserved.
