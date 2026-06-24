@@ -19,7 +19,7 @@ Route::get('/search-welcome', function (\Illuminate\Http\Request $request) {
         ->where('fName', 'LIKE', "%{$query}%")
         ->orWhere('lName', 'LIKE', "%{$query}%")
         ->orWhere('studentId', 'LIKE', "%{$query}%")
-        ->paginate(12);
+        ->paginate(12)->withQueryString();
     return view('welcome', compact('students'));
 })->name('search-welcome');
 

@@ -127,10 +127,10 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                @forelse ($students->take(8) as $student)
+                @forelse (((request()->routeIs('search-welcome') || request()->has('search')) ? $students : $students->take(8)) as $student)
                     <div class="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:bg-gray-800 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary-500/10">
                         <div class="flex items-start gap-4">
-                            <img src="{{ asset('storage/images/' . $student->studentImage) }}" alt="{{ $student->fName }}" class="w-16 h-16 rounded-full object-cover border-2 border-gray-700 group-hover:border-primary-500 transition-colors">
+                            <img src="https://randomuser.me/api/portraits/{{ (strtolower($student->gender) === 'female') ? 'women' : 'men' }}/{{ $student->id % 90 }}.jpg" alt="{{ $student->fName }}" class="w-16 h-16 rounded-full object-cover border-2 border-gray-700 group-hover:border-primary-500 transition-colors">
                             <div>
                                 <h3 class="text-lg font-bold text-white group-hover:text-primary-400 transition-colors">{{ $student->fName }} {{ $student->lName }}</h3>
                                 <p class="text-sm text-primary-400 mb-2 font-medium">{{ $student->course }}</p>
@@ -164,7 +164,11 @@
                 @endforelse
             </div>
             
-            @if($students->count() > 8)
+            @if(request()->routeIs('search-welcome') || request()->has('search'))
+                <div class="mt-12 pt-6 border-t border-gray-800 flex justify-center">
+                    {{ $students->links() }}
+                </div>
+            @elseif($students->count() > 8)
             <div class="mt-12 text-center">
                 <a href="{{ route('search-welcome') }}" class="inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 font-medium transition-colors">
                     View Full Directory 

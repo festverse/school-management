@@ -10,7 +10,7 @@
             <!-- Profile Banner -->
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
-                    <img src="{{ $profile ? asset('storage/images/' . $profile->studentImage) : asset('default.png') }}" alt="Profile" class="w-24 h-24 rounded-full border-4 border-gray-200 dark:border-gray-700 object-cover">
+                    <img src="https://randomuser.me/api/portraits/{{ ($profile && strtolower($profile->gender) === 'female') ? 'women' : 'men' }}/{{ ($profile ? $profile->id : 1) % 90 }}.jpg" alt="Profile" class="w-24 h-24 rounded-full border-4 border-gray-200 dark:border-gray-700 object-cover">
                     <div class="text-center md:text-left">
                         <h2 class="text-2xl font-bold text-gray-900 dark:text-white">{{ Auth::user()->name }}</h2>
                         <p class="text-gray-500 dark:text-gray-400">{{ $profile ? $profile->course : 'Course Not Assigned' }}</p>
