@@ -11,7 +11,7 @@
 
 </div>
 
-A production-grade, full-stack Laravel web application engineered to demonstrate complex relational database modeling, strict Role-Based Access Control (RBAC), robust MVC architecture, decoupled RESTful API endpoints, and a premium modern UI/UX design.
+A production-grade, full-stack Laravel web application engineered to demonstrate complex relational database modeling, strict Role-Based Access Control (RBAC), robust MVC architecture, decoupled RESTful API endpoints, elite dark-mode glassmorphism UI/UX design, and resilient zero-config cloud deployment architecture.
 
 ![Lumina University](https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1200)
 
@@ -21,16 +21,17 @@ A production-grade, full-stack Laravel web application engineered to demonstrate
 * **Web Portal:** [https://school-management-1-hqy0.onrender.com](https://school-management-1-hqy0.onrender.com)
 * **API Endpoints:** `/api/students`, `/api/courses`, `/api/departments`
 
-### 🔑 Quick Demo Credentials for Recruiters
-To evaluate the **Role-Based Access Control (RBAC)** features and dedicated dashboard portals, please use the following seeded accounts:
+### 🔑 Permanent Demo Credentials for Recruiters
+To evaluate the **Role-Based Access Control (RBAC)** features and highly interactive tabbed dashboard portals, please use the following permanently seeded accounts:
 
-| Role | Email | Password | Dashboard Features |
+| Portal Role | Email | Password | Dedicated Portal Features |
 | :--- | :--- | :--- | :--- |
-| **System Admin** | `admin@demo.com` | `admin123` | High-level analytics, User & Student CRUD, Course & Dept management |
-| **Faculty Teacher** | `teacher1@demo.com` | `teacher123` | Assigned classes, student course rosters, schedule tracking |
-| **Student** | `student@demo.com` | `password` | Academic profile card, enrolled course schedule, final grades |
+| 🎓 **Personal Student Account** | `upv5603@gmail.com` | `password123` | Active courses, schedule timetable, digital library, clubs, financial aid |
+| 🎓 **Demo Student** | `student@demo.com` | `student123` | Enrolled course schedule, academic profile card, real-time grades |
+| 👨‍🏫 **Faculty Teacher** | `teacher1@demo.com` | `teacher123` | Assigned classes, attendance tracker, office hours, research grants |
+| 🛡️ **System Administrator** | `admin@demo.com` | `admin123` | System metrics, user governance, curriculum orchestration, audit logs |
 
-*(Note: There are 10 seeded teachers `teacher1` through `teacher10` and over 50 seeded students in the live directory).*
+*(Note: There are 10 permanently seeded faculty accounts `teacher1@demo.com` through `teacher10@demo.com` and over 50 seeded students in the live directory).*
 
 ---
 
@@ -52,14 +53,21 @@ Engineered custom HTTP middleware (`RoleMiddleware`) that acts as an authorizati
 
 ### 3. Premium Tailwind CSS & Alpine.js UI/UX
 Designed a stunning, dark-themed glassmorphism landing page reflecting a modern, elite university aesthetic.
-* **Live Student Directory:** Implemented a real-time, searchable, and dynamically paginated student library grid directly on the root index.
-* **Refined Micro-interactions:** Features smooth CSS hover transformations (`-translate-y-1`), backdrop blur navigation bars, and curated color palettes.
+* **Live Student Directory:** Implemented a real-time, searchable, and dynamically paginated student library grid directly on the root index (`withQueryString()`).
+* **Interactive Feature-Rich Portals:** Immersive tabbed portals powered by Alpine.js allowing instant switching between interactive management interfaces without page reloads.
+* **Refined Micro-interactions:** Features smooth CSS hover transformations (`-translate-y-1`), backdrop blur navigation bars, single-layer glassmorphism dropdown menus, and curated dark color palettes (`bg-gray-950 text-gray-100`).
 
 ### 4. Decoupled RESTful JSON API
 Equipped with clean, public RESTful API endpoints in `routes/api.php` to demonstrate backend decoupling capabilities for mobile app consumers or separate React/Vue frontends:
 * `GET /api/departments` — Returns all academic departments with nested course structures.
 * `GET /api/courses` — Returns all courses loaded with parent department relationships.
 * `GET /api/students` — Returns paginated student directory profiles with optional query parameter filtering (`?course=CS` or `?search=Alice`).
+
+### 5. Resilient Cloud Container Architecture
+Optimized for zero-config deployment in ephemeral cloud container environments like Render, Fly.io, and Railway:
+* **Automated Database Seeding:** Startup script (`start.sh`) automatically migrates and executes `db:seed --force`, ensuring default user accounts and personal profiles instantly exist upon container boot or after sleep/restart cycles.
+* **Robust Registration Flow:** Custom `RegisteredUserController` instantly binds fully populated Eloquent `Student` profiles upon new signup to satisfy strict database integrity constraints.
+* **SSL Load Balancer Proxying:** Fully configured `TrustProxies.php` (`$proxies = '*'`) and `config/session.php` (`SESSION_DRIVER=cookie`) to completely eliminate `419 Page Expired` CSRF errors behind SSL-terminating reverse proxies.
 
 ---
 
