@@ -17,6 +17,11 @@ class UniversitySeeder extends Seeder
 {
     public function run(): void
     {
+        // Check if database is already seeded to prevent duplicate key errors
+        if (User::where('email', 'admin@demo.com')->exists()) {
+            return;
+        }
+
         $faker = Faker::create();
 
         // 1. Create Admin
@@ -89,6 +94,47 @@ class UniversitySeeder extends Seeder
         $statuses = ['Enrolled', 'Not Enrolled', 'Pending'];
         $genders = ['Male', 'Female'];
         
+        // User's personal account (Utsav Vasava)
+        $utsavUser = User::create([
+            'name' => 'Utsav Vasava',
+            'email' => 'upv5603@gmail.com',
+            'password' => Hash::make('password123'),
+            'role' => 'student',
+        ]);
+        
+        $utsavProfile = Student::create([
+            'user_id' => $utsavUser->id,
+            'studentImage' => 'default.png',
+            'fName' => 'Utsav',
+            'mName' => 'P',
+            'lName' => 'Vasava',
+            'studentId' => 'LUMINA-88392',
+            'email' => 'upv5603@gmail.com',
+            'pNumber' => '+1 (555) 382-9921',
+            'course' => 'BSc in Advanced Technologies',
+            'age' => 21,
+            'gender' => 'Male',
+            'brgy' => 'Cybernetics Quarter',
+            'city' => 'Tech City',
+            'province' => 'Innovation State',
+            'enrolled' => 'Enrolled',
+        ]);
+
+        // Enroll Utsav in 4 random classes with stellar grades
+        $utsavClasses = array_rand($classes, 4);
+        foreach ($utsavClasses as $classIdx) {
+            $enrollment = Enrollment::create([
+                'student_id' => $utsavUser->id,
+                'course_class_id' => $classes[$classIdx]->id,
+                'status' => 'enrolled',
+            ]);
+            Grade::create([
+                'enrollment_id' => $enrollment->id,
+                'grade' => rand(88, 98) + (rand(0, 99) / 100),
+                'remarks' => 'Dean\'s List Quality',
+            ]);
+        }
+
         // Ensure there is at least one known student account for demo
         $demoStudentUser = User::create([
             'name' => 'Demo Student',
