@@ -32,7 +32,7 @@
 </head>
 <body class="antialiased bg-slate-50 text-slate-900 font-sans selection:bg-[#E51937] selection:text-white" x-data="{ highContrast: false, reduceMotion: false, showInquiryModal: false, showVideoModal: false }" :class="{ 'filter contrast-125': highContrast, 'scroll-smooth': !reduceMotion }">
 
-    <!-- Howard-Style Floating Quick-Action Sidebar / Drawer -->
+    <!-- Floating Quick-Action Sidebar / Drawer -->
     <div x-data="{ openQuickActions: false }" class="fixed right-0 top-1/3 z-50 flex items-center">
         <!-- Main Pull Tab -->
         <button @click="openQuickActions = !openQuickActions" class="bg-[#E51937] hover:bg-[#B21B2A] text-white p-3 shadow-2xl flex flex-col items-center gap-2 rounded-l-xl transition-all duration-300 group border-l-2 border-y-2 border-white/20">
@@ -123,7 +123,7 @@
                 </div>
             </div>
             <p class="text-[11px] text-slate-300 leading-relaxed pt-2 border-t border-white/10">
-                Inspired by Howard University's premium interactive experience standards to ensure ultimate visual accessibility and engagement.
+                Engineered with elite interactive experience standards to ensure ultimate visual accessibility and engagement.
             </p>
         </div>
         <button @click="openAccess = !openAccess" class="flex items-center gap-3 bg-[#002855] hover:bg-[#001a38] text-white border border-white/20 px-5 py-3 rounded-full shadow-2xl hover:scale-105 transition-all duration-300 group">
@@ -132,7 +132,7 @@
         </button>
     </div>
 
-    <!-- Howard-Style Live Breaking News & Research Alert Ticker -->
+    <!-- Live Breaking News & Research Alert Ticker -->
     <div x-data="{ 
         active: 0, 
         isPaused: false,
@@ -183,7 +183,7 @@
             <span>•</span>
             <span>Est. 1867</span>
             <span>•</span>
-            <span>Washington, D.C. Style Heritage</span>
+            <span>Legacy of Innovation</span>
         </div>
         <div class="flex items-center space-x-6 w-full md:w-auto justify-end">
             <a href="{{ route('admissions') }}" class="hover:underline transition-all">Apply</a>
@@ -277,10 +277,21 @@
         </div>
     </nav>
 
-    <!-- Immersive Cinematic Hero Section with Howard-Style High-End Interactive Controls -->
+    <!-- Immersive Cinematic Hero Section with High-End Interactive Controls -->
     <div x-data="{ 
         isPlaying: true, 
         isAudioMuted: true, 
+        init() {
+            this.$nextTick(() => {
+                const vid = this.$refs.bgVideo;
+                if (vid) {
+                    vid.play().catch(e => {
+                        console.log('Autoplay blocked by browser:', e);
+                        this.isPlaying = false;
+                    });
+                }
+            });
+        },
         togglePlay() { 
             this.isPlaying = !this.isPlaying; 
             const vid = this.$refs.bgVideo; 
@@ -300,9 +311,11 @@
 
         <!-- Hero Background Media: Cinematic Video with Fallback -->
         <div class="absolute inset-0 z-0">
-            <video x-ref="bgVideo" autoplay loop muted playsinline class="w-full h-full object-cover opacity-35 object-center filter contrast-125">
-                <!-- High-End University Campus / Academic Cinematic Video -->
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-students-walking-in-a-university-campus-4519-large.mp4" type="video/mp4">
+            <video x-ref="bgVideo" autoplay loop muted playsinline preload="auto" poster="https://images.unsplash.com/photo-1541336032412-2048a678540d?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover opacity-35 object-center filter contrast-125">
+                <!-- High-End University Campus / Academic Cinematic Videos -->
+                <source src="https://assets.coverr.co/video/mp4/1080/coverr-walking-around-a-university-campus-5264.mp4" type="video/mp4">
+                <source src="https://cdn.pixabay.com/video/2023/10/15/185093-874635956_large.mp4" type="video/mp4">
+                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <div class="absolute inset-0 bg-gradient-to-r from-[#002855] via-[#002855]/90 to-transparent"></div>
@@ -314,7 +327,7 @@
                 <!-- High-End Dynamic Badge -->
                 <div class="inline-flex items-center gap-3 px-4 py-2 bg-black/40 backdrop-blur-md text-white border border-white/20 rounded-full text-xs font-bold uppercase tracking-widest shadow-2xl">
                     <span class="w-2 h-2 rounded-full bg-[#E51937] animate-pulse"></span>
-                    <span class="tracking-widest text-slate-100">Howard University Inspired Immersive Experience</span>
+                    <span class="tracking-widest text-slate-100">Lumina Immersive Digital Experience</span>
                 </div>
 
                 <h1 class="text-5xl md:text-7xl font-serif font-black tracking-tight text-white leading-[1.1]">
@@ -339,7 +352,7 @@
                     </button>
                 </div>
 
-                <!-- Howard-Style Interactive Ambient Hero Controls -->
+                <!-- Interactive Ambient Hero Controls -->
                 <div class="pt-8 border-t border-white/10 flex items-center gap-6 text-xs font-bold text-slate-300 uppercase tracking-widest">
                     <div class="flex items-center gap-3">
                         <button @click="togglePlay()" class="p-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full text-white backdrop-blur-md transition-all flex items-center justify-center" :title="isPlaying ? 'Pause Background Video' : 'Play Background Video'">
@@ -492,7 +505,7 @@
         </div>
     </div>
 
-    <!-- Howard-Style Interactive Tabbed Showcase: Academic Pillars & Centers of Excellence -->
+    <!-- Interactive Tabbed Showcase: Academic Pillars & Centers of Excellence -->
     <div x-data="{ activeTab: 'coe' }" class="py-24 bg-white border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
             <div class="text-center max-w-3xl mx-auto">
@@ -790,7 +803,7 @@
         </div>
     </div>
 
-    <!-- Howard-Style Interactive Cinematic Modals -->
+    <!-- Interactive Cinematic Modals -->
     <!-- Virtual Tour Video Modal -->
     <div x-show="showVideoModal" class="fixed inset-0 z-50 overflow-y-auto" style="display: none;">
         <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
