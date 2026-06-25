@@ -282,20 +282,18 @@
         isPlaying: true, 
         isAudioMuted: true, 
         init() {
-            this.$nextTick(() => {
-                const vid = this.$refs.bgVideo;
-                if (vid) {
-                    vid.play().catch(e => {
-                        console.log('Autoplay blocked by browser:', e);
-                        this.isPlaying = false;
-                    });
-                }
-            });
+            // YouTube iframe ready state tracking
         },
         togglePlay() { 
             this.isPlaying = !this.isPlaying; 
-            const vid = this.$refs.bgVideo; 
-            if (vid) { this.isPlaying ? vid.play() : vid.pause(); } 
+            const iframe = this.$refs.bgIframe; 
+            if (iframe && iframe.contentWindow) { 
+                iframe.contentWindow.postMessage(JSON.stringify({
+                    event: 'command',
+                    func: this.isPlaying ? 'playVideo' : 'pauseVideo',
+                    args: []
+                }), '*');
+            } 
         },
         toggleAudio() {
             this.isAudioMuted = !this.isAudioMuted;
@@ -309,17 +307,16 @@
             <source src="https://cdn.pixabay.com/download/audio/2022/05/16/audio_1808fbf07a.mp3?filename=ambient-piano-music-110444.mp3" type="audio/mpeg">
         </audio>
 
-        <!-- Hero Background Media: Cinematic Video with Fallback -->
-        <div class="absolute inset-0 z-0">
-            <video x-ref="bgVideo" autoplay loop muted playsinline preload="auto" poster="https://images.unsplash.com/photo-1541336032412-2048a678540d?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover opacity-35 object-center filter contrast-125">
-                <!-- High-End University Campus / Academic Cinematic Videos -->
-                <source src="https://assets.coverr.co/video/mp4/1080/coverr-walking-around-a-university-campus-5264.mp4" type="video/mp4">
-                <source src="https://cdn.pixabay.com/video/2023/10/15/185093-874635956_large.mp4" type="video/mp4">
-                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="absolute inset-0 bg-gradient-to-r from-[#002855] via-[#002855]/90 to-transparent"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-[#002855] via-[#002855]/50 to-transparent"></div>
+        <!-- Hero Background Media: Cinematic Video Embed -->
+        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <!-- 4K Cinematic University Campus Intro Video -->
+            <iframe x-ref="bgIframe" class="w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover opacity-85" 
+                src="https://www.youtube-nocookie.com/embed/Unz3X3uE82U?autoplay=1&mute=1&loop=1&playlist=Unz3X3uE82U&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1" 
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+            <!-- Subtle elegant overlay to ensure text is perfectly legible while keeping the video bright, vibrant, and completely visible -->
+            <div class="absolute inset-0 bg-gradient-to-r from-[#002855]/80 via-[#002855]/50 to-transparent"></div>
+            <div class="absolute inset-0 bg-[#002855]/20 backdrop-contrast-105"></div>
         </div>
 
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 w-full">
