@@ -110,21 +110,7 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-gray-950 py-6 border-t border-gray-800">
-        <div class="w-full px-4 sm:px-8 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-3">
-                <div class="text-2xl">
-                    🎓
-                </div>
-                <span class="text-gray-400 font-medium">© 2026 Lumina University. All rights reserved.</span>
-            </div>
-            <div class="flex gap-6">
-                <a href="{{ route('privacy') }}" class="text-gray-500 hover:text-white transition-colors">Privacy Policy</a>
-                <a href="{{ route('terms') }}" class="text-gray-500 hover:text-white transition-colors">Terms of Service</a>
-                <a href="{{ route('contact') }}" class="text-gray-500 hover:text-white transition-colors">Contact Support</a>
-            </div>
-        </div>
-    </footer>
+    <!-- Master Footer -->
+    <x-footer />
 </body>
 </html>

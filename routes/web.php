@@ -30,6 +30,17 @@ Route::get('/privacy-policy', function () { return view('privacy'); })->name('pr
 Route::get('/terms-of-service', function () { return view('terms'); })->name('terms');
 Route::get('/contact-support', function () { return view('contact'); })->name('contact');
 
+Route::get('/gymkhana', function () { return view('gymkhana'); })->name('gymkhana');
+Route::get('/wellness', function () { return view('wellness'); })->name('wellness');
+Route::get('/gender-cell', function () { return view('gender-cell'); })->name('gender-cell');
+Route::get('/sc-st-cell', function () { return view('sc-st-cell'); })->name('sc-st-cell');
+Route::get('/irbs', function () { return view('irbs'); })->name('irbs');
+Route::get('/asc', function () { return view('asc'); })->name('asc');
+Route::get('/moodle', function () { return view('moodle'); })->name('moodle');
+Route::get('/library', function () { return view('library'); })->name('library');
+Route::get('/feedback', function () { return view('feedback'); })->name('feedback');
+Route::get('/news-events', function () { return view('news-events'); })->name('news-events');
+
 // Dynamic Dashboard Redirect based on Role
 Route::get('/dashboard', function () {
     $role = auth()->user()->role;

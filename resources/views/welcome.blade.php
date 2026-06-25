@@ -108,6 +108,61 @@
         </div>
     </div>
 
+    <!-- Institutional News & Events Section -->
+    <div class="py-24 bg-gray-900 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl font-display font-bold text-white mb-4">Latest News & Announcements</h2>
+                    <p class="text-gray-400 max-w-2xl">Stay connected with groundbreaking research discoveries, international academic symposiums, and vibrant student campus celebrations.</p>
+                </div>
+                <a href="{{ route('news-events') }}" class="mt-6 md:mt-0 inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 font-medium transition-colors">
+                    View All News & Events
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
+            </div>
+
+            <!-- News Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-800/40 border border-gray-700/50 rounded-3xl overflow-hidden shadow-xl flex flex-col group hover:border-primary-500/50 transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=800" alt="Laboratory Research" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="p-8 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="text-xs font-bold text-primary-400 uppercase tracking-wider mb-2 block">Breakthrough | June 2026</span>
+                            <h3 class="text-xl font-bold text-white mb-2">AI-Powered Mesoporous Carbon Nanomaterials</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">Lumina researchers successfully synthesize next-generation carbon nanostructures capable of high-precision oncological drug delivery.</p>
+                        </div>
+                        <a href="{{ route('news-events') }}" class="inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 font-medium text-sm transition-colors">Read Full Article →</a>
+                    </div>
+                </div>
+
+                <div class="bg-gray-800/40 border border-gray-700/50 rounded-3xl overflow-hidden shadow-xl flex flex-col group hover:border-purple-500/50 transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800" alt="Informatics Laboratory" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="p-8 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="text-xs font-bold text-purple-400 uppercase tracking-wider mb-2 block">Computing | May 2026</span>
+                            <h3 class="text-xl font-bold text-white mb-2">$12M Grant Awarded for Quantum Fencing</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">The Department of Computer Science secures a multi-year national defense grant to establish lattice-based quantum cryptography protocols.</p>
+                        </div>
+                        <a href="{{ route('news-events') }}" class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-medium text-sm transition-colors">Explore Grant Details →</a>
+                    </div>
+                </div>
+
+                <div class="bg-gray-800/40 border border-gray-700/50 rounded-3xl overflow-hidden shadow-xl flex flex-col group hover:border-emerald-500/50 transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800" alt="Students Collaboration" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="p-8 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2 block">Accreditation | April 2026</span>
+                            <h3 class="text-xl font-bold text-white mb-2">Lumina Achieves Perfect Global QS Tier-1 Rank</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">International academic evaluation councils rank Lumina University in the top 1% globally for faculty research citations and graduate employability.</p>
+                        </div>
+                        <a href="{{ route('news-events') }}" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-medium text-sm transition-colors">View Institutional Audit →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Student Directory Preview -->
     <div id="student-directory" class="py-24 bg-gray-900 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -179,21 +234,7 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-gray-950 py-6 border-t border-gray-800">
-        <div class="w-full px-4 sm:px-8 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-3">
-                <div class="text-2xl">
-                    🎓
-                </div>
-                <span class="text-gray-400 font-medium">© 2026 Lumina University. All rights reserved.</span>
-            </div>
-            <div class="flex gap-6">
-                <a href="{{ route('privacy') }}" class="text-gray-500 hover:text-white transition-colors">Privacy Policy</a>
-                <a href="{{ route('terms') }}" class="text-gray-500 hover:text-white transition-colors">Terms of Service</a>
-                <a href="{{ route('contact') }}" class="text-gray-500 hover:text-white transition-colors">Contact Support</a>
-            </div>
-        </div>
-    </footer>
+    <!-- Master Footer -->
+    <x-footer />
 </body>
 </html>
