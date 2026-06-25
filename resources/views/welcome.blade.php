@@ -305,17 +305,15 @@
     }" class="relative pt-32 pb-36 lg:pt-48 lg:pb-56 bg-[#002855] overflow-hidden flex items-center">
         
         <!-- Ambient Campus Audio Source -->
-        <audio x-ref="ambientAudio" loop preload="none">
-            <source src="https://cdn.pixabay.com/download/audio/2022/05/16/audio_1808fbf07a.mp3?filename=ambient-piano-music-110444.mp3" type="audio/mpeg">
+        <audio x-ref="ambientAudio" loop preload="auto">
+            <source src="{{ asset('audio/ambient-campus.mp3') }}" type="audio/mpeg">
         </audio>
 
         <!-- Hero Background Media: Cinematic Video with Fallback -->
         <div class="absolute inset-0 z-0">
             <video x-ref="bgVideo" autoplay loop muted playsinline preload="auto" poster="https://images.unsplash.com/photo-1541336032412-2048a678540d?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover opacity-85 object-center filter contrast-110">
-                <!-- High-End University Campus / Academic Cinematic Videos -->
-                <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/7/77/Cornell_University_Campus_Tour.webm/Cornell_University_Campus_Tour.webm.1080p.vp9.webm" type="video/webm">
-                <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/c/c4/Campus_Tour_of_the_University_of_Adelaide.webm/Campus_Tour_of_the_University_of_Adelaide.webm.1080p.vp9.webm" type="video/webm">
-                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+                <!-- High-End Local University Campus Cinematic Video -->
+                <source src="{{ asset('videos/campus-tour.mp4') }}" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <div class="absolute inset-0 bg-gradient-to-r from-[#002855]/80 via-[#002855]/50 to-transparent"></div>
