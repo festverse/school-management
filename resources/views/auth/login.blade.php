@@ -18,9 +18,9 @@
                     <span>Demo Student</span>
                     <span class="text-[10px] font-normal opacity-80">student@demo.com</span>
                 </button>
-                <button type="button" onclick="document.getElementById('email').value='upv5603@gmail.com'; document.getElementById('password').value='password123';" class="p-2 bg-slate-100 hover:bg-[#002855] hover:text-white text-[#002855] text-xs font-bold rounded-lg border border-slate-300 transition-all shadow-sm flex flex-col items-center justify-center">
+                <button type="button" onclick="document.getElementById('email').value='utsavvasava9@gmail.com'; document.getElementById('password').value='password123';" class="p-2 bg-slate-100 hover:bg-[#002855] hover:text-white text-[#002855] text-xs font-bold rounded-lg border border-slate-300 transition-all shadow-sm flex flex-col items-center justify-center">
                     <span>Utsav Vasava (Student)</span>
-                    <span class="text-[10px] font-normal opacity-80">upv5603@gmail.com</span>
+                    <span class="text-[10px] font-normal opacity-80">utsavvasava9@gmail.com</span>
                 </button>
                 <button type="button" onclick="document.getElementById('email').value='teacher1@demo.com'; document.getElementById('password').value='teacher123';" class="p-2 bg-slate-100 hover:bg-[#002855] hover:text-white text-[#002855] text-xs font-bold rounded-lg border border-slate-300 transition-all shadow-sm flex flex-col items-center justify-center">
                     <span>Demo Teacher</span>

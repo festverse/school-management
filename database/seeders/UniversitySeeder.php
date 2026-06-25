@@ -97,7 +97,7 @@ class UniversitySeeder extends Seeder
         // User's personal account (Utsav Vasava)
         $utsavUser = User::create([
             'name' => 'Utsav Vasava',
-            'email' => 'upv5603@gmail.com',
+            'email' => 'utsavvasava9@gmail.com',
             'password' => Hash::make('password123'),
             'role' => 'student',
         ]);
@@ -109,7 +109,7 @@ class UniversitySeeder extends Seeder
             'mName' => 'P',
             'lName' => 'Vasava',
             'studentId' => 'LUMINA-88392',
-            'email' => 'upv5603@gmail.com',
+            'email' => 'utsavvasava9@gmail.com',
             'pNumber' => '+1 (555) 382-9921',
             'course' => 'BSc in Advanced Technologies',
             'age' => 21,
