@@ -243,7 +243,7 @@
                 <div class="bg-white border border-slate-200 rounded-xl p-8 shadow-md flex flex-col justify-between group hover:shadow-xl transition-all duration-300">
                     <div>
                         <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
-                            <div class="p-3 bg-[#002855] text-white rounded-lg font-bold">📜</div>
+                            <div class="text-2xl">📜</div>
                             <h3 class="text-xl font-serif font-bold text-[#002855]">Active Tenders & RFPs</h3>
                         </div>
                         <ul class="space-y-4 text-sm text-slate-700 mb-8 divide-y divide-slate-100">
@@ -252,14 +252,14 @@
                             <li class="pt-4"><a href="{{ route('tenders') }}" class="hover:text-[#E51937] transition-colors block font-medium">LU/TEN/2026/062: AMC for Campus Optical Fiber Backbone Network</a></li>
                         </ul>
                     </div>
-                    <a href="{{ route('tenders') }}" class="w-full py-3 bg-[#002855] hover:bg-[#003366] text-white font-bold text-sm uppercase tracking-wider rounded-lg shadow text-center block transition-all">View All Tenders</a>
+                    <a href="{{ route('tenders') }}" class="w-full py-3 bg-[#E51937] hover:bg-[#B21B2A] text-white font-bold text-sm uppercase tracking-wider rounded-lg shadow text-center block transition-all">View All Tenders</a>
                 </div>
 
                 <!-- Careers & Recruitment -->
                 <div class="bg-white border border-slate-200 rounded-xl p-8 shadow-md flex flex-col justify-between group hover:shadow-xl transition-all duration-300">
                     <div>
                         <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
-                            <div class="p-3 bg-[#E51937] text-white rounded-lg font-bold">👥</div>
+                            <div class="text-2xl">👥</div>
                             <h3 class="text-xl font-serif font-bold text-[#002855]">Faculty & Staff Careers</h3>
                         </div>
                         <ul class="space-y-4 text-sm text-slate-700 mb-8 divide-y divide-slate-100">
@@ -275,7 +275,7 @@
                 <div class="bg-white border border-slate-200 rounded-xl p-8 shadow-md flex flex-col justify-between group hover:shadow-xl transition-all duration-300">
                     <div>
                         <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
-                            <div class="p-3 bg-[#002855] text-white rounded-lg font-bold">📌</div>
+                            <div class="text-2xl">📌</div>
                             <h3 class="text-xl font-serif font-bold text-[#002855]">Student Circulars</h3>
                         </div>
                         <ul class="space-y-4 text-sm text-slate-700 mb-8 divide-y divide-slate-100">
@@ -284,7 +284,7 @@
                             <li class="pt-4"><a href="{{ route('asc') }}" class="hover:text-[#E51937] transition-colors block font-medium">ASC Guidelines for Issuance of Cryptographically Signed Transcripts</a></li>
                         </ul>
                     </div>
-                    <a href="{{ route('academics') }}" class="w-full py-3 bg-[#002855] hover:bg-[#003366] text-white font-bold text-sm uppercase tracking-wider rounded-lg shadow text-center block transition-all">View Academic Circulars</a>
+                    <a href="{{ route('academics') }}" class="w-full py-3 bg-[#E51937] hover:bg-[#B21B2A] text-white font-bold text-sm uppercase tracking-wider rounded-lg shadow text-center block transition-all">View Academic Circulars</a>
                 </div>
             </div>
         </div>
