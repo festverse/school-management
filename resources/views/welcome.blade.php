@@ -53,7 +53,7 @@
             </div>
             <div class="space-y-4">
                 <button @click="showVideoModal = true; openQuickActions = false" class="w-full text-left p-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl transition-all flex items-center gap-4 group">
-                    <div class="p-2 bg-[#E51937] rounded-lg text-white group-hover:scale-110 transition-transform">
+                    <div class="p-2 bg-[#003366] rounded-lg text-[#FFB81C] group-hover:scale-110 transition-transform">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                     <div>
@@ -71,7 +71,7 @@
                     </div>
                 </button>
                 <a href="{{ route('contact') }}" class="w-full text-left p-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl transition-all flex items-center gap-4 group block">
-                    <div class="p-2 bg-[#E51937] rounded-lg text-white group-hover:scale-110 transition-transform">
+                    <div class="p-2 bg-[#003366] rounded-lg text-[#FFB81C] group-hover:scale-110 transition-transform">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                     </div>
                     <div>
