@@ -41,6 +41,16 @@ Route::get('/library', function () { return view('library'); })->name('library')
 Route::get('/feedback', function () { return view('feedback'); })->name('feedback');
 Route::get('/news-events', function () { return view('news-events'); })->name('news-events');
 
+Route::get('/tenders', function () { return view('tenders'); })->name('tenders');
+Route::get('/careers', function () { return view('careers'); })->name('careers');
+Route::get('/coe-robotics', function () { return view('coe-robotics'); })->name('coe-robotics');
+Route::get('/coe-ai', function () { return view('coe-ai'); })->name('coe-ai');
+Route::get('/coe-smart-cities', function () { return view('coe-smart-cities'); })->name('coe-smart-cities');
+Route::get('/incubation', function () { return view('incubation'); })->name('incubation');
+Route::get('/placement-cell', function () { return view('placement-cell'); })->name('placement-cell');
+Route::get('/director-desk', function () { return view('director-desk'); })->name('director-desk');
+
+
 // Dynamic Dashboard Redirect based on Role
 Route::get('/dashboard', function () {
     $role = auth()->user()->role;

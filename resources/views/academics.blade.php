@@ -55,7 +55,7 @@
                     <div class="text-3xl group-hover:scale-110 transition-transform duration-300">
                         🎓
                     </div>
-                    <span class="font-display font-bold text-2xl tracking-tight text-white">Lumina University</span>
+                    <span class="font-display font-bold text-2xl tracking-tight text-white group-hover:text-primary-400 transition-colors">Lumina University</span>
                 </a>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="{{ route('academics') }}" class="text-sm font-semibold text-primary-400 hover:text-primary-300 transition-colors">Academics</a>

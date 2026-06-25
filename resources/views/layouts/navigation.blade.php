@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}" class="flex items-center gap-3 group">
+                    <a href="{{ url('/') }}" class="flex items-center gap-3 group">
                         <div class="text-3xl group-hover:scale-110 transition-transform duration-300">
                             🎓
                         </div>
