@@ -376,11 +376,11 @@
                 <!-- SSIP Incubation Card -->
                 <div class="bg-white border border-slate-200 rounded-2xl p-12 shadow-lg flex flex-col justify-between space-y-8 hover:shadow-2xl transition-all duration-300">
                     <div class="space-y-6">
-                        <span class="px-4 py-1.5 bg-[#002855] text-white rounded-full text-xs font-bold uppercase tracking-widest inline-block">Student Startup & Innovation Policy (SSIP)</span>
+                        <span class="px-4 py-1.5 bg-[#E51937] text-white rounded-full text-xs font-bold uppercase tracking-widest inline-block">Student Startup & Innovation Policy (SSIP)</span>
                         <h3 class="text-3xl font-serif font-bold text-[#002855]">Lumina Innovation & Incubation Center</h3>
                         <p class="text-slate-600 text-base leading-relaxed">Empowering visionary student entrepreneurs with state-of-the-art makerspaces, elite venture capital mentorship, and non-dilutive seed grants up to ₹25 Lakhs. Over 40+ deep-tech startups successfully incubated.</p>
                     </div>
-                    <a href="{{ route('incubation') }}" class="w-full py-4 bg-[#002855] hover:bg-[#E51937] text-white font-bold uppercase tracking-wider text-sm rounded-lg text-center block shadow transition-all hover:-translate-y-1">Enter Incubation Portal</a>
+                    <a href="{{ route('incubation') }}" class="w-full py-4 bg-[#E51937] hover:bg-[#B21B2A] text-white font-bold uppercase tracking-wider text-sm rounded-lg text-center block shadow transition-all hover:-translate-y-1">Enter Incubation Portal</a>
                 </div>
 
                 <!-- Placement Desk Card -->
