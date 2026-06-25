@@ -37,9 +37,10 @@
         
         <div class="w-full max-w-md z-10 flex flex-col items-center mb-8 text-center">
             <a href="{{ url('/') }}" class="flex flex-col items-center gap-4 group mb-2">
-                <div class="text-6xl group-hover:scale-110 transition-transform duration-300">
-                    🎓
-                </div>
+                <svg class="w-16 h-16 text-white group-hover:text-[#FFB81C] transition-all duration-300 group-hover:scale-110 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
+                    <path d="M21 12.27L12 17.18 3 12.27v4.18c0 2.22 4.03 4.05 9 4.05s9-1.83 9-4.05v-4.18z" />
+                </svg>
                 <span class="font-serif font-bold text-4xl tracking-tight text-white">Lumina University</span>
             </a>
             <p class="text-slate-300 text-sm tracking-wide font-medium">Excellence in Truth and Service</p>

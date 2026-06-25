@@ -6,9 +6,10 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ url('/') }}" class="flex items-center gap-3 group">
-                        <div class="text-4xl group-hover:scale-110 transition-transform duration-300">
-                            🎓
-                        </div>
+                        <svg class="w-10 h-10 text-white group-hover:text-[#FFB81C] transition-all duration-300 group-hover:scale-110 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
+                            <path d="M21 12.27L12 17.18 3 12.27v4.18c0 2.22 4.03 4.05 9 4.05s9-1.83 9-4.05v-4.18z" />
+                        </svg>
                         <span class="text-2xl font-serif font-bold text-white tracking-tight">Lumina University</span>
                     </a>
                 </div>
