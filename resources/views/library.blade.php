@@ -52,9 +52,10 @@
         <div class="w-full px-4 sm:px-8 lg:px-12">
             <div class="flex justify-between h-24 items-center">
                 <a href="{{ url('/') }}" class="flex-shrink-0 flex items-center gap-4 group">
-                    <div class="text-4xl group-hover:scale-110 transition-transform duration-300">
-                        🎓
-                    </div>
+                    <svg class="w-10 h-10 text-white group-hover:text-[#FFB81C] transition-all duration-300 group-hover:scale-110 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
+                        <path d="M21 12.27L12 17.18 3 12.27v4.18c0 2.22 4.03 4.05 9 4.05s9-1.83 9-4.05v-4.18z" />
+                    </svg>
                     <div class="flex flex-col">
                         <span class="font-serif font-bold text-3xl tracking-tight text-white group-hover:text-[#FFB81C] transition-colors">Lumina University</span>
                         <span class="text-[10px] uppercase font-sans font-bold tracking-widest text-slate-300">Excellence in Truth and Service</span>
