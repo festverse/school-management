@@ -41,7 +41,7 @@
         <div class="w-full max-w-md z-10 flex flex-col items-center mb-8">
             <a href="{{ url('/') }}" class="flex items-center gap-3 group mb-4">
                 <div class="w-12 h-12 bg-primary-600 rounded-xl flex items-center justify-center text-white font-display font-bold text-2xl shadow-lg shadow-primary-500/30 group-hover:scale-105 transition-transform">
-                    U
+                    🎓
                 </div>
                 <span class="font-display font-bold text-3xl tracking-tight text-white">Lumina University</span>
             </a>
