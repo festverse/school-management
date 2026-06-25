@@ -52,7 +52,7 @@
         <div class="w-full px-4 sm:px-8 lg:px-12">
             <div class="flex justify-between h-20 items-center">
                 <a href="{{ url('/') }}" class="flex-shrink-0 flex items-center gap-3 group">
-                    <div class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center text-white font-display font-bold text-xl shadow-lg shadow-primary-500/30 group-hover:scale-105 transition-transform">
+                    <div class="text-3xl group-hover:scale-110 transition-transform duration-300">
                         🎓
                     </div>
                     <span class="font-display font-bold text-2xl tracking-tight text-white">Lumina University</span>
@@ -154,7 +154,7 @@
     <footer class="bg-gray-950 py-6 border-t border-gray-800">
         <div class="w-full px-4 sm:px-8 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-gray-800 rounded flex items-center justify-center text-white font-display font-bold text-sm">
+                <div class="text-2xl">
                     🎓
                 </div>
                 <span class="text-gray-400 font-medium">© 2026 Lumina University. All rights reserved.</span>
