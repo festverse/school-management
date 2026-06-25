@@ -199,7 +199,7 @@
                 <div class="bg-slate-50 border border-slate-200 rounded-xl overflow-hidden shadow-md flex flex-col group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                     <div class="relative overflow-hidden h-56">
                         <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800" alt="Informatics Laboratory" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute top-4 left-4 bg-[#E51937] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded shadow">HU2U Podcast</div>
+                        <div class="absolute top-4 left-4 bg-[#002855] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded shadow">HU2U Podcast</div>
                     </div>
                     <div class="p-8 flex-1 flex flex-col justify-between space-y-6">
                         <div>
