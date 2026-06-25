@@ -243,7 +243,10 @@
                 <div class="bg-white border border-slate-200 rounded-xl p-8 shadow-md flex flex-col justify-between group hover:shadow-xl transition-all duration-300">
                     <div>
                         <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
-                            <div class="text-2xl">📜</div>
+                            <svg class="w-7 h-7 text-[#002855] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                                <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
+                            </svg>
                             <h3 class="text-xl font-serif font-bold text-[#002855]">Active Tenders & RFPs</h3>
                         </div>
                         <ul class="space-y-4 text-sm text-slate-700 mb-8 divide-y divide-slate-100">
@@ -259,7 +262,9 @@
                 <div class="bg-white border border-slate-200 rounded-xl p-8 shadow-md flex flex-col justify-between group hover:shadow-xl transition-all duration-300">
                     <div>
                         <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
-                            <div class="text-2xl">👥</div>
+                            <svg class="w-7 h-7 text-[#002855] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
+                            </svg>
                             <h3 class="text-xl font-serif font-bold text-[#002855]">Faculty & Staff Careers</h3>
                         </div>
                         <ul class="space-y-4 text-sm text-slate-700 mb-8 divide-y divide-slate-100">
@@ -275,7 +280,9 @@
                 <div class="bg-white border border-slate-200 rounded-xl p-8 shadow-md flex flex-col justify-between group hover:shadow-xl transition-all duration-300">
                     <div>
                         <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
-                            <div class="text-2xl">📌</div>
+                            <svg class="w-7 h-7 text-[#002855] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M18 3a1 1 0 00-1.447-.894L8.763 6H5a3 3 0 000 6h.28l1.771 5.316A1 1 0 008 18h1a1 1 0 001-1v-4.382l6.553 3.276A1 1 0 0018 15V3z" clip-rule="evenodd" />
+                            </svg>
                             <h3 class="text-xl font-serif font-bold text-[#002855]">Student Circulars</h3>
                         </div>
                         <ul class="space-y-4 text-sm text-slate-700 mb-8 divide-y divide-slate-100">
