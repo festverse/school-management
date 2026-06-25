@@ -282,20 +282,16 @@
         isPlaying: true, 
         isAudioMuted: true, 
         init() {
-            this.$nextTick(() => {
-                const vid = this.$refs.bgVideo;
-                if (vid) {
-                    vid.play().catch(e => {
-                        console.log('Autoplay blocked by browser:', e);
-                        this.isPlaying = false;
-                    });
-                }
-            });
+            // Vimeo player tracking initialized
         },
         togglePlay() { 
             this.isPlaying = !this.isPlaying; 
-            const vid = this.$refs.bgVideo; 
-            if (vid) { this.isPlaying ? vid.play() : vid.pause(); } 
+            const iframe = this.$refs.bgIframe; 
+            if (iframe && iframe.contentWindow) { 
+                iframe.contentWindow.postMessage(JSON.stringify({
+                    method: this.isPlaying ? 'play' : 'pause'
+                }), '*');
+            } 
         },
         toggleAudio() {
             this.isAudioMuted = !this.isAudioMuted;
@@ -309,13 +305,14 @@
             <source src="{{ asset('audio/ambient-campus.mp3') }}" type="audio/mpeg">
         </audio>
 
-        <!-- Hero Background Media: Cinematic Video with Fallback -->
-        <div class="absolute inset-0 z-0">
-            <video x-ref="bgVideo" autoplay loop muted playsinline preload="auto" poster="https://images.unsplash.com/photo-1541336032412-2048a678540d?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover opacity-85 object-center filter contrast-110">
-                <!-- High-End Local University Campus Cinematic Video -->
-                <source src="{{ asset('videos/campus-tour.mp4') }}" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+        <!-- Hero Background Media: Vimeo Cinematic Embed -->
+        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <!-- 4K Cinematic Vimeo Background Stream -->
+            <iframe x-ref="bgIframe" class="w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover opacity-85" 
+                src="https://player.vimeo.com/video/1204457824?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&api=1" 
+                frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+            </iframe>
+            <!-- Subtle elegant overlay to ensure text is perfectly legible while keeping the video bright, vibrant, and completely visible -->
             <div class="absolute inset-0 bg-gradient-to-r from-[#002855]/80 via-[#002855]/50 to-transparent"></div>
             <div class="absolute inset-0 bg-[#002855]/20 backdrop-contrast-105"></div>
         </div>
