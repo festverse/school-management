@@ -9,7 +9,7 @@
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800|outfit:400,600,800&display=swap" rel="stylesheet" />
+        <link href="https://fonts.bunny.net/css?family=merriweather:400,700,900|inter:400,500,600,700,800&display=swap" rel="stylesheet" />
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
             tailwind.config = {
@@ -18,15 +18,12 @@
                     extend: {
                         fontFamily: {
                             sans: ['Inter', 'sans-serif'],
-                            display: ['Outfit', 'sans-serif'],
+                            serif: ['Merriweather', 'serif'],
                         },
                         colors: {
-                            primary: {
-                                50: '#eff6ff',
-                                100: '#dbeafe',
-                                500: '#3b82f6',
-                                600: '#2563eb',
-                                900: '#1e3a8a',
+                            bison: {
+                                blue: '#002855',
+                                red: '#E51937',
                             }
                         }
                     }
@@ -34,21 +31,21 @@
             }
         </script>
     </head>
-    <body class="font-sans text-gray-100 antialiased bg-gray-950 min-h-screen flex flex-col justify-center items-center p-6 relative overflow-x-hidden overflow-y-auto">
-        <!-- Abstract Shapes -->
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary-600/10 rounded-full blur-3xl pointer-events-none"></div>
+    <body class="font-sans text-slate-900 antialiased bg-[#002855] min-h-screen flex flex-col justify-center items-center p-6 relative overflow-x-hidden overflow-y-auto">
+        <!-- Background Overlay / Shield Accent -->
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-[#001a38] via-[#002855] to-[#003a7a] opacity-90 pointer-events-none"></div>
         
-        <div class="w-full max-w-md z-10 flex flex-col items-center mb-8">
-            <a href="{{ url('/') }}" class="flex items-center gap-3 group mb-4">
-                <div class="text-4xl group-hover:scale-110 transition-transform">
+        <div class="w-full max-w-md z-10 flex flex-col items-center mb-8 text-center">
+            <a href="{{ url('/') }}" class="flex flex-col items-center gap-4 group mb-2">
+                <div class="text-6xl group-hover:scale-110 transition-transform duration-300">
                     🎓
                 </div>
-                <span class="font-display font-bold text-3xl tracking-tight text-white">Lumina University</span>
+                <span class="font-serif font-bold text-4xl tracking-tight text-white">Lumina University</span>
             </a>
-            <p class="text-gray-400 text-sm">Secure Institutional Access Portal</p>
+            <p class="text-slate-300 text-sm tracking-wide font-medium">Excellence in Truth and Service</p>
         </div>
 
-        <div class="w-full max-w-md z-10 p-8 bg-gray-900/80 backdrop-blur-xl border border-gray-800 rounded-3xl shadow-2xl shadow-black/50">
+        <div class="w-full max-w-md z-10 p-8 bg-white border border-slate-100 rounded-2xl shadow-2xl shadow-black/40">
             {{ $slot }}
         </div>
     </body>

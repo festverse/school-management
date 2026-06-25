@@ -1,4 +1,4 @@
-@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-gray-900 border border-gray-700'])
+@props(['align' => 'right', 'width' => '56', 'contentClasses' => 'py-2 bg-white border border-slate-200 shadow-2xl rounded-xl'])
 
 @php
 switch ($align) {
@@ -18,6 +18,9 @@ switch ($width) {
     case '48':
         $width = 'w-48';
         break;
+    case '56':
+        $width = 'w-56';
+        break;
 }
 @endphp
 
@@ -33,10 +36,10 @@ switch ($width) {
             x-transition:leave="transition ease-in duration-75"
             x-transition:leave-start="transform opacity-100 scale-100"
             x-transition:leave-end="transform opacity-0 scale-95"
-            class="absolute z-50 mt-2 {{ $width }} rounded-xl shadow-2xl {{ $alignmentClasses }}"
+            class="absolute z-50 mt-2 {{ $width }} {{ $alignmentClasses }}"
             style="display: none;"
             @click="open = false">
-        <div class="rounded-xl {{ $contentClasses }}">
+        <div class="{{ $contentClasses }}">
             {{ $content }}
         </div>
     </div>

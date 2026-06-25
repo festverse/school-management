@@ -3,10 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admissions - Lumina University</title>
+    <title>Admissions | Lumina University</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800|outfit:400,600,800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=merriweather:400,700,900|inter:400,500,600,700,800&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -14,161 +15,176 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        display: ['Outfit', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            900: '#1e3a8a',
-                        }
+                        serif: ['Merriweather', 'serif'],
                     }
                 }
             }
         }
     </script>
-    <style>
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .hero-gradient {
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-        }
-        .text-gradient {
-            background: linear-gradient(to right, #60a5fa, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-    </style>
 </head>
-<body class="antialiased bg-gray-900 text-gray-100 font-sans selection:bg-primary-500 selection:text-white">
-    <!-- Navbar -->
-    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+<body class="antialiased bg-slate-50 text-slate-900 font-sans selection:bg-[#E51937] selection:text-white">
+    <!-- Auxiliary Top Bar -->
+    <div class="bg-[#E51937] text-white text-xs font-bold uppercase tracking-widest py-2 px-4 sm:px-8 lg:px-12 flex justify-between items-center z-50 relative shadow-inner">
+        <div class="hidden md:flex items-center space-x-6">
+            <span>The Mecca of Excellence</span>
+            <span>•</span>
+            <span>Est. 1867</span>
+            <span>•</span>
+            <span>Your Legacy Starts Here</span>
+        </div>
+        <div class="flex items-center space-x-6 w-full md:w-auto justify-end">
+            <a href="{{ route('admissions') }}" class="hover:underline transition-all">Apply</a>
+            <a href="{{ route('virtual-tour') }}" class="hover:underline transition-all">Visit</a>
+            <a href="{{ route('contact') }}" class="hover:underline transition-all">Give</a>
+            <a href="{{ url('/#student-directory') }}" class="hover:underline transition-all">Directory</a>
+            @if (Route::has('login'))
+                @auth
+                    <a href="{{ url('/dashboard') }}" class="bg-[#002855] text-white px-3 py-1 rounded hover:bg-[#003366] transition-all shadow">Enter Portal</a>
+                @else
+                    <a href="{{ route('login') }}" class="bg-[#002855] text-white px-3 py-1 rounded hover:bg-[#003366] transition-all shadow">Log in</a>
+                @endauth
+            @endif
+        </div>
+    </div>
+
+    <!-- Main Mega-Navbar -->
+    <nav x-data="{ open: false }" class="bg-[#002855] border-b border-[#001a38] sticky top-0 z-40 shadow-lg transition-all duration-300">
         <div class="w-full px-4 sm:px-8 lg:px-12">
-            <div class="flex justify-between h-20 items-center">
-                <a href="{{ url('/') }}" class="flex-shrink-0 flex items-center gap-3 group">
-                    <div class="text-3xl group-hover:scale-110 transition-transform duration-300">
+            <div class="flex justify-between h-24 items-center">
+                <a href="{{ url('/') }}" class="flex-shrink-0 flex items-center gap-4 group">
+                    <div class="text-4xl group-hover:scale-110 transition-transform duration-300">
                         🎓
                     </div>
-                    <span class="font-display font-bold text-2xl tracking-tight text-white group-hover:text-primary-400 transition-colors">Lumina University</span>
+                    <div class="flex flex-col">
+                        <span class="font-serif font-bold text-3xl tracking-tight text-white group-hover:text-[#FFB81C] transition-colors">Lumina University</span>
+                        <span class="text-[10px] uppercase font-sans font-bold tracking-widest text-slate-300">Excellence in Truth and Service</span>
+                    </div>
                 </a>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="{{ route('academics') }}" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Academics</a>
-                    <a href="{{ route('admissions') }}" class="text-sm font-semibold text-primary-400 hover:text-primary-300 transition-colors">Admissions</a>
-                    <a href="{{ url('/#student-directory') }}" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Student Directory</a>
-                    
-                    <div class="h-6 w-px bg-gray-700"></div>
 
-                    @if (Route::has('login'))
-                        @auth
-                            <a href="{{ url('/dashboard') }}" class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-primary-600 rounded-full hover:bg-primary-500 transition-all shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 hover:-translate-y-0.5">
-                                Enter Portal
-                            </a>
-                        @else
-                            <a href="{{ route('login') }}" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Log in</a>
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-white/10 border border-white/20 rounded-full hover:bg-white/20 transition-all backdrop-blur-sm">
-                                    Apply Now
-                                </a>
-                            @endif
-                        @endauth
-                    @endif
+                <!-- Desktop Navigation Links -->
+                <div class="hidden lg:flex items-center space-x-8 text-sm font-semibold uppercase tracking-wider text-white">
+                    <a href="{{ route('admissions') }}" class="text-[#FFB81C] transition-colors font-bold">Admission</a>
+                    <a href="{{ route('academics') }}" class="hover:text-[#FFB81C] transition-colors">Academics</a>
+                    <a href="{{ route('irbs') }}" class="hover:text-[#FFB81C] transition-colors">Research</a>
+                    <a href="{{ route('gymkhana') }}" class="hover:text-[#FFB81C] transition-colors">Athletics & Clubs</a>
+                    <a href="{{ route('news-events') }}" class="hover:text-[#FFB81C] transition-colors">News</a>
+                    <a href="{{ route('director-desk') }}" class="hover:text-[#FFB81C] transition-colors">About</a>
+                </div>
+
+                <!-- Call to action button -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="{{ route('admissions') }}" class="inline-flex items-center justify-center px-7 py-3.5 font-sans font-bold text-sm text-white bg-[#E51937] hover:bg-[#B21B2A] rounded-lg transition-all shadow-lg uppercase tracking-wider">
+                        Apply Now
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center">
+                    <button @click="open = !open" class="text-white p-2 focus:outline-none">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
                 </div>
             </div>
+        </div>
+
+        <!-- Mobile Navigation Dropdown -->
+        <div x-show="open" x-transition class="lg:hidden bg-[#001a38] border-t border-slate-700 text-white px-6 py-4 space-y-4 font-semibold uppercase tracking-wider text-sm">
+            <a href="{{ route('admissions') }}" class="block py-2 text-[#FFB81C]">Admission</a>
+            <a href="{{ route('academics') }}" class="block py-2 hover:text-[#FFB81C]">Academics</a>
+            <a href="{{ route('irbs') }}" class="block py-2 hover:text-[#FFB81C]">Research</a>
+            <a href="{{ route('gymkhana') }}" class="block py-2 hover:text-[#FFB81C]">Athletics & Clubs</a>
+            <a href="{{ route('news-events') }}" class="block py-2 hover:text-[#FFB81C]">News</a>
+            <a href="{{ route('director-desk') }}" class="block py-2 hover:text-[#FFB81C]">About</a>
+            <a href="{{ route('admissions') }}" class="block py-3 text-center bg-[#E51937] rounded-lg shadow font-bold text-white">Apply Now</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <div class="relative pt-32 pb-20 hero-gradient flex items-center overflow-hidden border-b border-gray-800">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-3xl opacity-40 pointer-events-none"></div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-4xl md:text-6xl font-display font-extrabold tracking-tight text-white mb-6">
-                Your Journey <span class="text-gradient">Begins Here</span>
+    <div class="relative pt-24 pb-28 bg-[#002855] text-white border-b border-[#001a38]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <span class="text-xs font-bold uppercase tracking-widest text-[#FFB81C] px-3 py-1 bg-[#001a38] rounded-full border border-slate-700 inline-block">Admissions & Outreach</span>
+            <h1 class="text-5xl md:text-6xl font-serif font-black tracking-tight">
+                Your Legacy <span class="text-[#FFB81C]">Begins Here</span>
             </h1>
-            <p class="max-w-2xl text-lg text-gray-400 mx-auto font-light">
+            <p class="max-w-3xl text-lg text-slate-200 mx-auto font-normal leading-relaxed">
                 Discover our streamlined application process, generous financial aid packages, and the comprehensive support systems waiting for you at Lumina University.
             </p>
         </div>
     </div>
 
     <!-- Admissions Content -->
-    <div class="py-24 bg-gray-900">
+    <div class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
             <!-- Timeline Section -->
-            <div class="bg-gray-800/40 backdrop-blur-sm border border-gray-700/60 rounded-3xl p-8 lg:p-12 shadow-xl shadow-black/20">
-                <h2 class="text-3xl font-display font-bold text-white mb-10">4 Steps to Excellence</h2>
+            <div class="bg-white border border-slate-200 rounded-2xl p-8 lg:p-12 shadow-lg">
+                <h2 class="text-4xl font-serif font-bold text-[#002855] mb-12">4 Steps to Excellence</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="space-y-4 border-t-2 border-primary-500 pt-4">
-                        <span class="text-3xl font-display font-extrabold text-primary-500">01</span>
-                        <h3 class="text-xl font-bold text-white">Choose Your Program</h3>
-                        <p class="text-sm text-gray-400">Review our Academic catalog and select the department and specific major that aligns with your future aspirations.</p>
+                    <div class="space-y-4 border-t-4 border-[#002855] pt-6">
+                        <span class="text-4xl font-serif font-black text-[#002855]">01</span>
+                        <h3 class="text-xl font-serif font-bold text-[#002855]">Choose Your Program</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">Review our Academic catalog and select the department and specific major that aligns with your future aspirations.</p>
                     </div>
-                    <div class="space-y-4 border-t-2 border-purple-500 pt-4">
-                        <span class="text-3xl font-display font-extrabold text-purple-500">02</span>
-                        <h3 class="text-xl font-bold text-white">Prepare Documentation</h3>
-                        <p class="text-sm text-gray-400">Gather your official academic transcripts, letters of recommendation, and personal statement of purpose.</p>
+                    <div class="space-y-4 border-t-4 border-[#E51937] pt-6">
+                        <span class="text-4xl font-serif font-black text-[#E51937]">02</span>
+                        <h3 class="text-xl font-serif font-bold text-[#002855]">Prepare Documentation</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">Gather your official academic transcripts, letters of recommendation, and personal statement of purpose.</p>
                     </div>
-                    <div class="space-y-4 border-t-2 border-primary-400 pt-4">
-                        <span class="text-3xl font-display font-extrabold text-primary-400">03</span>
-                        <h3 class="text-xl font-bold text-white">Submit Application</h3>
-                        <p class="text-sm text-gray-400">Create your student portal account and submit your fully completed application via our secure admissions engine.</p>
+                    <div class="space-y-4 border-t-4 border-[#FFB81C] pt-6">
+                        <span class="text-4xl font-serif font-black text-[#FFB81C]">03</span>
+                        <h3 class="text-xl font-serif font-bold text-[#002855]">Submit Application</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">Create your student portal account and submit your fully completed application via our secure admissions engine.</p>
                     </div>
-                    <div class="space-y-4 border-t-2 border-emerald-500 pt-4">
-                        <span class="text-3xl font-display font-extrabold text-emerald-500">04</span>
-                        <h3 class="text-xl font-bold text-white">Enrollment & Onboarding</h3>
-                        <p class="text-sm text-gray-400">Upon formal acceptance, complete your class enrollment registration and join our exclusive campus orientation.</p>
+                    <div class="space-y-4 border-t-4 border-[#002855] pt-6">
+                        <span class="text-4xl font-serif font-black text-[#002855]">04</span>
+                        <h3 class="text-xl font-serif font-bold text-[#002855]">Enrollment & Onboarding</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">Upon formal acceptance, complete your class enrollment registration and join our exclusive campus orientation.</p>
                     </div>
                 </div>
             </div>
 
             <!-- Financial Aid Section -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-gray-800/20 border border-gray-800 rounded-3xl p-8 lg:p-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-white border border-slate-200 rounded-2xl p-8 lg:p-12 shadow-xl">
                 <div>
-                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-400 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full mb-3 inline-block">Scholarships & Grants</span>
-                    <h2 class="text-3xl sm:text-4xl font-display font-bold text-white mb-6">Accessible World-Class Education</h2>
-                    <p class="text-gray-400 mb-6 font-light leading-relaxed">
+                    <span class="text-xs font-bold uppercase tracking-widest text-[#E51937] px-3 py-1 bg-red-50 border border-red-200 rounded-full mb-3 inline-block">Scholarships & Grants</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-[#002855] mb-6">Accessible World-Class Education</h2>
+                    <p class="text-slate-600 mb-6 font-normal leading-relaxed">
                         We believe that financial barriers should never prevent exceptional talent from achieving greatness. Lumina University offers extensive merit-based scholarships, need-based grants, and graduate research assistantships.
                     </p>
-                    <ul class="space-y-4 text-sm text-gray-300 mb-8">
+                    <ul class="space-y-4 text-sm text-slate-700 font-medium mb-8">
                         <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <svg class="w-5 h-5 text-[#E51937] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                             <span>Up to 100% Tuition Coverage for Academic Excellence</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <svg class="w-5 h-5 text-[#E51937] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                             <span>Dedicated On-Campus Employment Opportunities</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <svg class="w-5 h-5 text-[#E51937] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                             <span>Zero Application Fee for First-Generation Students</span>
                         </li>
                     </ul>
-                    <a href="{{ route('register') }}" class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-primary-600 rounded-full hover:bg-primary-500 transition-all shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 hover:-translate-y-1">
+                    <a href="{{ route('register') }}" class="inline-flex items-center justify-center px-8 py-4 text-sm font-bold uppercase tracking-wider text-white bg-[#E51937] rounded-lg hover:bg-[#B21B2A] transition-all shadow-lg hover:-translate-y-1">
                         Begin Application Now
                     </a>
                 </div>
-                <div class="bg-gray-900 border border-gray-700/50 rounded-2xl p-8 shadow-2xl space-y-6">
-                    <h3 class="text-xl font-bold text-white mb-4">Estimated Investment Summary</h3>
-                    <div class="flex justify-between items-center pb-4 border-b border-gray-800">
-                        <span class="text-gray-400">Full-Time Undergraduate Tuition</span>
-                        <span class="text-white font-semibold">$14,500 / Semester</span>
+                <div class="bg-[#002855] border border-[#001a38] rounded-xl p-8 shadow-2xl space-y-6 text-white">
+                    <h3 class="text-2xl font-serif font-bold text-white mb-4">Estimated Investment Summary</h3>
+                    <div class="flex justify-between items-center pb-4 border-b border-slate-700">
+                        <span class="text-slate-300 text-sm">Full-Time Undergraduate Tuition</span>
+                        <span class="text-white font-bold text-base">$14,500 / Semester</span>
                     </div>
-                    <div class="flex justify-between items-center pb-4 border-b border-gray-800">
-                        <span class="text-gray-400">Graduate Research Tuition</span>
-                        <span class="text-white font-semibold">$18,200 / Semester</span>
+                    <div class="flex justify-between items-center pb-4 border-b border-slate-700">
+                        <span class="text-slate-300 text-sm">Graduate Research Tuition</span>
+                        <span class="text-white font-bold text-base">$18,200 / Semester</span>
                     </div>
-                    <div class="flex justify-between items-center pb-4 border-b border-gray-800">
-                        <span class="text-gray-400">Average Awarded Financial Aid</span>
-                        <span class="text-emerald-400 font-semibold">-$9,800 / Semester</span>
+                    <div class="flex justify-between items-center pb-4 border-b border-slate-700">
+                        <span class="text-slate-300 text-sm">Average Awarded Financial Aid</span>
+                        <span class="text-[#FFB81C] font-bold text-base">-$9,800 / Semester</span>
                     </div>
-                    <div class="flex justify-between items-center pt-2 text-lg font-bold">
+                    <div class="flex justify-between items-center pt-2 text-xl font-serif font-bold">
                         <span class="text-white">Estimated Net Out-of-Pocket</span>
-                        <span class="text-primary-400">$4,700 / Semester</span>
+                        <span class="text-[#FFB81C]">$4,700 / Semester</span>
                     </div>
                 </div>
             </div>

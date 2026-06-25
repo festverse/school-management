@@ -1,29 +1,29 @@
-<nav x-data="{ open: false }" class="bg-gray-900/50 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
+<nav x-data="{ open: false }" class="bg-[#002855] border-b border-[#001a38] sticky top-0 z-50 shadow-md">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
+        <div class="flex justify-between h-20">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ url('/') }}" class="flex items-center gap-3 group">
-                        <div class="text-3xl group-hover:scale-110 transition-transform duration-300">
+                        <div class="text-4xl group-hover:scale-110 transition-transform duration-300">
                             🎓
                         </div>
-                        <span class="text-xl font-bold bg-gradient-to-r from-white via-blue-200 to-indigo-300 bg-clip-text text-transparent">Lumina University</span>
+                        <span class="text-2xl font-serif font-bold text-white tracking-tight">Lumina University</span>
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <a href="{{ route('dashboard') }}" class="inline-flex items-center px-1 pt-1 border-b-2 {{ request()->routeIs('dashboard') ? 'border-blue-500 text-white font-semibold' : 'border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-700' }} text-sm transition duration-150 ease-in-out">
+                    <a href="{{ route('dashboard') }}" class="inline-flex items-center px-1 pt-1 border-b-4 {{ request()->routeIs('dashboard') ? 'border-[#E51937] text-white font-bold' : 'border-transparent text-slate-200 hover:text-white hover:border-slate-300' }} text-sm uppercase tracking-wider font-semibold transition duration-150 ease-in-out">
                         {{ __('Dashboard') }}
                     </a>
                     @if(auth()->user()->role === 'admin')
-                    <a href="{{ route('add-student') }}" class="inline-flex items-center px-1 pt-1 border-b-2 {{ request()->routeIs('add-student') ? 'border-blue-500 text-white font-semibold' : 'border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-700' }} text-sm transition duration-150 ease-in-out">
+                    <a href="{{ route('add-student') }}" class="inline-flex items-center px-1 pt-1 border-b-4 {{ request()->routeIs('add-student') ? 'border-[#E51937] text-white font-bold' : 'border-transparent text-slate-200 hover:text-white hover:border-slate-300' }} text-sm uppercase tracking-wider font-semibold transition duration-150 ease-in-out">
                         {{ __('Add Student') }}
                     </a>
                     @endif
-                    <a href="{{ url('/') }}" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-700 text-sm transition duration-150 ease-in-out">
+                    <a href="{{ url('/') }}" class="inline-flex items-center px-1 pt-1 border-b-4 border-transparent text-slate-200 hover:text-white hover:border-slate-300 text-sm uppercase tracking-wider font-semibold transition duration-150 ease-in-out">
                         {{ __('Home') }}
                     </a>
                 </div>
@@ -31,13 +31,13 @@
 
             <!-- Settings Dropdown & Logout Button -->
             <div class="hidden sm:flex sm:items-center sm:ml-6 space-x-4">
-                <x-dropdown align="right" width="48">
+                <x-dropdown align="right" width="56">
                     <x-slot name="trigger">
-                        <button class="inline-flex items-center px-4 py-2 border border-gray-700 text-sm leading-4 font-medium rounded-xl text-gray-300 bg-gray-800 hover:text-white hover:border-gray-600 focus:outline-none transition ease-in-out duration-150 shadow-sm">
+                        <button class="inline-flex items-center px-4 py-2.5 border border-slate-300 text-sm leading-4 font-semibold rounded-lg text-white bg-[#003366] hover:bg-[#004080] focus:outline-none transition ease-in-out duration-150 shadow-sm gap-2">
                             <div>{{ Auth::user()->name }}</div>
 
-                            <div class="ml-2">
-                                <svg class="fill-current h-4 w-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <div>
+                                <svg class="fill-current h-4 w-4 text-slate-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                                 </svg>
                             </div>
@@ -45,32 +45,45 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('dashboard')" class="text-gray-300 hover:bg-gray-800 hover:text-white transition font-medium">
-                            {{ __('My Dashboard') }}
-                        </x-dropdown-link>
+                        <!-- Direct list items without redundant wrapping div to prevent double layer -->
+                        <a href="{{ route('dashboard') }}" class="block px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-[#002855] transition">
+                            📊 {{ __('My Dashboard') }}
+                        </a>
 
-                        <x-dropdown-link :href="route('profile.edit')" class="text-gray-300 hover:bg-gray-800 hover:text-white transition font-medium">
-                            {{ __('Account Profile') }}
-                        </x-dropdown-link>
+                        <a href="{{ route('profile.edit') }}" class="block px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-[#002855] transition">
+                            👤 {{ __('Account Profile') }}
+                        </a>
 
-                        <x-dropdown-link :href="route('academics')" class="text-gray-300 hover:bg-gray-800 hover:text-white transition font-medium">
-                            {{ __('Academics Catalog') }}
-                        </x-dropdown-link>
+                        <a href="{{ route('academics') }}" class="block px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-[#002855] transition border-t border-slate-100">
+                            📖 {{ __('Academics Catalog') }}
+                        </a>
 
-                        <x-dropdown-link :href="route('contact')" class="text-gray-300 hover:bg-gray-800 hover:text-white transition font-medium">
-                            {{ __('Help & Support') }}
-                        </x-dropdown-link>
+                        <a href="{{ route('library') }}" class="block px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-[#002855] transition">
+                            📚 {{ __('University Library') }}
+                        </a>
 
-                        <x-dropdown-link :href="url('/')" class="text-gray-300 hover:bg-gray-800 hover:text-white transition font-medium border-t border-gray-800">
-                            {{ __('Main Home') }}
-                        </x-dropdown-link>
+                        <a href="{{ route('irbs') }}" class="block px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-[#002855] transition">
+                            🔬 {{ __('Research Archive') }}
+                        </a>
+
+                        <a href="{{ route('moodle') }}" class="block px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-[#002855] transition">
+                            💻 {{ __('Moodle LMS') }}
+                        </a>
+
+                        <a href="{{ route('contact') }}" class="block px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-[#002855] transition border-t border-slate-100">
+                            ✉ {{ __('Help & Support') }}
+                        </a>
+
+                        <a href="{{ url('/') }}" class="block px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-[#002855] transition border-t border-slate-100">
+                            🏠 {{ __('Main Home') }}
+                        </a>
                     </x-slot>
                 </x-dropdown>
 
                 <!-- Explicit Logout Button -->
                 <form method="POST" action="{{ route('logout') }}" class="inline-flex">
                     @csrf
-                    <button type="submit" class="inline-flex items-center px-4 py-2 bg-red-600/80 hover:bg-red-600 text-white text-sm font-semibold rounded-xl shadow-lg shadow-red-600/30 transition duration-150 ease-in-out gap-2">
+                    <button type="submit" class="inline-flex items-center px-5 py-2.5 bg-[#E51937] hover:bg-[#B21B2A] text-white text-sm font-bold uppercase tracking-wider rounded-lg shadow-md transition duration-150 ease-in-out gap-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
                         {{ __('Log Out') }}
                     </button>
@@ -79,7 +92,7 @@
 
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none focus:bg-gray-800 focus:text-white transition duration-150 ease-in-out">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-slate-200 hover:text-white hover:bg-[#003366] focus:outline-none focus:bg-[#003366] focus:text-white transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -90,34 +103,39 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden bg-gray-900/95 backdrop-blur-md border-b border-gray-800">
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden bg-[#001f42] border-b border-[#001428]">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-gray-300 hover:bg-gray-800 hover:text-white">
+            <a href="{{ route('dashboard') }}" class="block pl-3 pr-4 py-2 border-l-4 {{ request()->routeIs('dashboard') ? 'border-[#E51937] text-white bg-[#002855] font-bold' : 'border-transparent text-slate-300 hover:text-white hover:bg-[#002855]' }} text-base font-medium">
                 {{ __('Dashboard') }}
-            </x-responsive-nav-link>
+            </a>
+            @if(auth()->user()->role === 'admin')
+            <a href="{{ route('add-student') }}" class="block pl-3 pr-4 py-2 border-l-4 {{ request()->routeIs('add-student') ? 'border-[#E51937] text-white bg-[#002855] font-bold' : 'border-transparent text-slate-300 hover:text-white hover:bg-[#002855]' }} text-base font-medium">
+                {{ __('Add Student') }}
+            </a>
+            @endif
+            <a href="{{ url('/') }}" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-slate-300 hover:text-white hover:bg-[#002855] text-base font-medium">
+                {{ __('Home') }}
+            </a>
         </div>
 
         <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-800">
+        <div class="pt-4 pb-1 border-t border-[#001428]">
             <div class="px-4">
-                <div class="font-medium text-base text-gray-200">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-400">{{ Auth::user()->email }}</div>
+                <div class="font-bold text-base text-white">{{ Auth::user()->name }}</div>
+                <div class="font-medium text-sm text-slate-300">{{ Auth::user()->email }}</div>
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')" class="text-gray-300 hover:bg-gray-800 hover:text-white">
+                <a href="{{ route('profile.edit') }}" class="block pl-3 pr-4 py-2 text-base font-medium text-slate-300 hover:text-white hover:bg-[#002855]">
                     {{ __('Profile') }}
-                </x-responsive-nav-link>
+                </a>
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();" class="text-red-400 hover:bg-gray-800 hover:text-red-300">
+                    <button type="submit" class="w-full text-left block pl-3 pr-4 py-2 text-base font-bold text-[#E51937] hover:text-red-400 hover:bg-[#002855]">
                         {{ __('Log Out') }}
-                    </x-responsive-nav-link>
+                    </button>
                 </form>
             </div>
         </div>

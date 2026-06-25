@@ -1,62 +1,71 @@
-<footer class="bg-gray-950 py-16 border-t border-gray-800 text-gray-300 font-sans">
+<footer class="bg-[#002855] py-20 border-t-8 border-[#E51937] text-slate-200 font-sans">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
             <!-- Address Column -->
             <div>
-                <h4 class="text-white font-bold text-lg mb-6 tracking-wide">Address</h4>
-                <p class="text-gray-400 text-sm leading-relaxed font-light">
-                    Academic Office,<br>
-                    2nd floor,<br>
-                    Nandan Nilekani Main Building<br>
-                    Lumina University
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="text-3xl">🎓</span>
+                    <span class="text-2xl font-serif font-bold text-white tracking-tight">Lumina University</span>
+                </div>
+                <h4 class="text-white font-serif font-bold text-lg mb-4 tracking-wide text-[#E51937]">The Mecca of Excellence</h4>
+                <p class="text-slate-300 text-sm leading-relaxed font-normal">
+                    Office of the Provost,<br>
+                    Suite 100, Hall of Fame Building<br>
+                    Lumina University Campus<br>
+                    Excellence in Truth and Service
                 </p>
             </div>
 
             <!-- Important Links Column -->
             <div>
-                <h4 class="text-white font-bold text-lg mb-6 tracking-wide">Important Links</h4>
-                <ul class="space-y-3 text-sm font-light">
-                    <li><a href="{{ route('gymkhana') }}" class="text-gray-300 hover:text-white transition-colors">Gymkhana</a></li>
-                    <li><a href="{{ route('wellness') }}" class="text-gray-300 hover:text-white transition-colors">Student Wellness Center</a></li>
-                    <li><a href="{{ route('gender-cell') }}" class="text-gray-300 hover:text-white transition-colors">Gender Cell</a></li>
-                    <li><a href="{{ route('sc-st-cell') }}" class="text-gray-300 hover:text-white transition-colors">SC/ST Cell</a></li>
+                <h4 class="text-white font-serif font-bold text-lg mb-6 tracking-wide border-b-2 border-[#E51937] pb-2 inline-block">Campus Resources</h4>
+                <ul class="space-y-3 text-sm font-medium">
+                    <li><a href="{{ route('gymkhana') }}" class="text-slate-300 hover:text-white hover:underline transition-all">Gymkhana Student Council</a></li>
+                    <li><a href="{{ route('wellness') }}" class="text-slate-300 hover:text-white hover:underline transition-all">Student Wellness Center</a></li>
+                    <li><a href="{{ route('gender-cell') }}" class="text-slate-300 hover:text-white hover:underline transition-all">Gender Equity Cell</a></li>
+                    <li><a href="{{ route('sc-st-cell') }}" class="text-slate-300 hover:text-white hover:underline transition-all">Equal Opportunity Cell</a></li>
+                    <li><a href="{{ route('placement-cell') }}" class="text-slate-300 hover:text-white hover:underline transition-all">Placement & Training Cell</a></li>
+                    <li><a href="{{ route('incubation') }}" class="text-slate-300 hover:text-white hover:underline transition-all">Innovation & Incubation</a></li>
                 </ul>
             </div>
 
-            <!-- Portals & Resources Column -->
-            <div class="pt-1 lg:pt-12">
-                <ul class="space-y-3 text-sm font-light">
-                    <li><a href="{{ route('irbs') }}" class="text-gray-300 hover:text-white transition-colors">IRBS</a></li>
-                    <li><a href="{{ route('asc') }}" class="text-gray-300 hover:text-white transition-colors">ASC</a></li>
-                    <li><a href="{{ route('moodle') }}" class="text-gray-300 hover:text-white transition-colors">Moodle</a></li>
-                    <li><a href="{{ route('library') }}" class="text-gray-300 hover:text-white transition-colors">Library</a></li>
-                    <li><a href="{{ route('feedback') }}" class="text-gray-300 hover:text-white transition-colors">Feedback form</a></li>
+            <!-- Portals & Academic Services Column -->
+            <div>
+                <h4 class="text-white font-serif font-bold text-lg mb-6 tracking-wide border-b-2 border-[#E51937] pb-2 inline-block">Research & Academics</h4>
+                <ul class="space-y-3 text-sm font-medium">
+                    <li><a href="{{ route('irbs') }}" class="text-slate-300 hover:text-white hover:underline transition-all">IRBS Research System</a></li>
+                    <li><a href="{{ route('asc') }}" class="text-slate-300 hover:text-white hover:underline transition-all">Academic Service Center (ASC)</a></li>
+                    <li><a href="{{ route('moodle') }}" class="text-slate-300 hover:text-white hover:underline transition-all">Moodle Digital Classroom</a></li>
+                    <li><a href="{{ route('library') }}" class="text-slate-300 hover:text-white hover:underline transition-all">Central Informatics Library</a></li>
+                    <li><a href="{{ route('tenders') }}" class="text-slate-300 hover:text-white hover:underline transition-all">Institutional Bulletin & Tenders</a></li>
+                    <li><a href="{{ route('careers') }}" class="text-slate-300 hover:text-white hover:underline transition-all">Careers & Faculty Hiring</a></li>
                 </ul>
             </div>
 
             <!-- Quick Actions / Login Column -->
-            <div class="pt-1 lg:pt-12">
-                <ul class="space-y-3 text-sm font-medium">
+            <div>
+                <h4 class="text-white font-serif font-bold text-lg mb-6 tracking-wide border-b-2 border-[#E51937] pb-2 inline-block">Secure Institutional Portals</h4>
+                <p class="text-slate-300 text-sm mb-6 leading-relaxed">Log in to manage course schedules, research grants, and student analytics.</p>
+                <div class="space-y-4">
                     @auth
-                        <li>
-                            <a href="{{ url('/dashboard') }}" class="text-primary-400 hover:text-primary-300 transition-colors inline-flex items-center gap-2">
-                                <span class="w-1.5 h-1.5 rounded-full bg-primary-500"></span> Enter Portal
-                            </a>
-                        </li>
+                        <a href="{{ url('/dashboard') }}" class="w-full inline-flex items-center justify-center px-6 py-3 bg-[#E51937] hover:bg-[#B21B2A] text-white font-bold text-sm uppercase tracking-wider rounded-lg shadow-lg transition-all gap-2">
+                            Enter Secured Portal
+                        </a>
                     @else
-                        <li>
-                            <a href="{{ route('login') }}" class="text-gray-300 hover:text-white transition-colors inline-flex items-center gap-2">
-                                <span class="w-1.5 h-1.5 rounded-full bg-gray-500"></span> Log in
-                            </a>
-                        </li>
+                        <a href="{{ route('login') }}" class="w-full inline-flex items-center justify-center px-6 py-3 bg-[#E51937] hover:bg-[#B21B2A] text-white font-bold text-sm uppercase tracking-wider rounded-lg shadow-lg transition-all gap-2">
+                            Institutional Log in
+                        </a>
+                        <a href="{{ route('register') }}" class="w-full inline-flex items-center justify-center px-6 py-3 bg-[#003366] hover:bg-[#004080] border border-slate-300 text-white font-bold text-sm uppercase tracking-wider rounded-lg shadow-md transition-all gap-2">
+                            New Student Intake
+                        </a>
                     @endauth
-                </ul>
+                </div>
             </div>
         </div>
 
         <!-- Bottom Bar (Social Icons, Copyright & Back to Top) -->
-        <div class="mt-16 pt-8 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-6 text-xl text-gray-400">
+        <div class="mt-16 pt-8 border-t border-[#001a38] flex flex-col sm:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-6 text-xl text-slate-300">
                 <a href="https://facebook.com" target="_blank" class="hover:text-white transition-colors font-bold">f</a>
                 <a href="https://twitter.com" target="_blank" class="hover:text-white transition-colors">
                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -65,13 +74,14 @@
                 </a>
                 <a href="https://linkedin.com" target="_blank" class="hover:text-white transition-colors font-bold">in</a>
             </div>
-            <div class="flex flex-wrap justify-center items-center gap-6 text-sm text-gray-500 font-light">
-                <a href="{{ route('privacy') }}" class="hover:text-white transition-colors">Privacy Policy</a>
-                <a href="{{ route('terms') }}" class="hover:text-white transition-colors">Terms of Service</a>
-                <a href="{{ route('contact') }}" class="hover:text-white transition-colors">Contact Support</a>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-sm text-slate-300 font-medium">
+                <a href="{{ route('privacy') }}" class="hover:text-white hover:underline transition-colors">Privacy Policy</a>
+                <a href="{{ route('terms') }}" class="hover:text-white hover:underline transition-colors">Terms of Service</a>
+                <a href="{{ route('contact') }}" class="hover:text-white hover:underline transition-colors">Contact Support</a>
+                <a href="{{ route('feedback') }}" class="hover:text-white hover:underline transition-colors">Institutional Feedback</a>
                 <span>© 2026 Lumina University. All rights reserved.</span>
             </div>
-            <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" title="Back to top" class="w-12 h-12 bg-gray-800 hover:bg-gray-700 text-white rounded-lg flex items-center justify-center transition-all shadow-lg hover:-translate-y-1">
+            <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" title="Back to top" class="w-12 h-12 bg-[#E51937] hover:bg-[#B21B2A] text-white rounded-lg flex items-center justify-center transition-all shadow-lg hover:-translate-y-1">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
             </button>
         </div>
