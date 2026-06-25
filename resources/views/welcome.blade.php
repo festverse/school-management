@@ -349,21 +349,37 @@
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="bg-[#003366] border border-[#004080] rounded-2xl p-8 text-center shadow-xl hover:-translate-y-1 transition-all duration-300">
-                    <h3 class="text-4xl md:text-6xl font-serif font-black text-white mb-3">₹45 Cr+</h3>
-                    <p class="text-[#FFB81C] font-semibold text-sm uppercase tracking-wider">Active Research Funding</p>
+                <div class="bg-[#003366] border border-[#004080] rounded-2xl p-8 text-center shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between h-full">
+                    <div class="flex-1 flex items-center justify-center mb-4">
+                        <h3 class="text-4xl md:text-6xl font-serif font-black text-white">₹45 Cr+</h3>
+                    </div>
+                    <div class="min-h-[3.5rem] flex items-center justify-center">
+                        <p class="text-[#FFB81C] font-semibold text-sm uppercase tracking-wider">Active Research Funding</p>
+                    </div>
                 </div>
-                <div class="bg-[#003366] border border-[#004080] rounded-2xl p-8 text-center shadow-xl hover:-translate-y-1 transition-all duration-300">
-                    <h3 class="text-4xl md:text-6xl font-serif font-black text-white mb-3">100%</h3>
-                    <p class="text-[#FFB81C] font-semibold text-sm uppercase tracking-wider">Ph.D. Holding Faculty</p>
+                <div class="bg-[#003366] border border-[#004080] rounded-2xl p-8 text-center shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between h-full">
+                    <div class="flex-1 flex items-center justify-center mb-4">
+                        <h3 class="text-4xl md:text-6xl font-serif font-black text-white">100%</h3>
+                    </div>
+                    <div class="min-h-[3.5rem] flex items-center justify-center">
+                        <p class="text-[#FFB81C] font-semibold text-sm uppercase tracking-wider">Ph.D. Holding Faculty</p>
+                    </div>
                 </div>
-                <div class="bg-[#003366] border border-[#004080] rounded-2xl p-8 text-center shadow-xl hover:-translate-y-1 transition-all duration-300">
-                    <h3 class="text-4xl md:text-6xl font-serif font-black text-white mb-3">50+</h3>
-                    <p class="text-[#FFB81C] font-semibold text-sm uppercase tracking-wider">Global Industrial MoUs</p>
+                <div class="bg-[#003366] border border-[#004080] rounded-2xl p-8 text-center shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between h-full">
+                    <div class="flex-1 flex items-center justify-center mb-4">
+                        <h3 class="text-4xl md:text-6xl font-serif font-black text-white">50+</h3>
+                    </div>
+                    <div class="min-h-[3.5rem] flex items-center justify-center">
+                        <p class="text-[#FFB81C] font-semibold text-sm uppercase tracking-wider">Global Industrial MoUs</p>
+                    </div>
                 </div>
-                <div class="bg-[#003366] border border-[#004080] rounded-2xl p-8 text-center shadow-xl hover:-translate-y-1 transition-all duration-300">
-                    <h3 class="text-4xl md:text-6xl font-serif font-black text-white mb-3">25+</h3>
-                    <p class="text-[#FFB81C] font-semibold text-sm uppercase tracking-wider">High-Tech Laboratories</p>
+                <div class="bg-[#003366] border border-[#004080] rounded-2xl p-8 text-center shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between h-full">
+                    <div class="flex-1 flex items-center justify-center mb-4">
+                        <h3 class="text-4xl md:text-6xl font-serif font-black text-white">25+</h3>
+                    </div>
+                    <div class="min-h-[3.5rem] flex items-center justify-center">
+                        <p class="text-[#FFB81C] font-semibold text-sm uppercase tracking-wider">High-Tech Laboratories</p>
+                    </div>
                 </div>
             </div>
         </div>
