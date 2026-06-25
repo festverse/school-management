@@ -307,8 +307,8 @@
 
         <!-- Hero Background Media: Vimeo Cinematic Embed -->
         <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-            <!-- 4K Cinematic Vimeo Background Stream -->
-            <iframe x-ref="bgIframe" class="w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover opacity-85" 
+            <!-- 4K Cinematic Vimeo Background Stream (Scaled to completely eliminate top/bottom margin letterboxing) -->
+            <iframe x-ref="bgIframe" class="w-[130vw] h-[73.125vw] min-h-[130%] min-w-[231%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover opacity-85" 
                 src="https://player.vimeo.com/video/1204457824?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&api=1" 
                 frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
             </iframe>
