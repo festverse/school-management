@@ -351,7 +351,7 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
                 <div class="bg-[#003366] border border-[#004080] rounded-2xl p-8 text-center shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between h-full">
                     <div class="flex-1 flex items-center justify-center mb-4">
-                        <h3 class="text-4xl md:text-6xl font-serif font-black text-white">₹45 Cr+</h3>
+                        <h3 class="text-4xl md:text-6xl font-serif font-black text-white">$5.5M+</h3>
                     </div>
                     <div class="min-h-[3.5rem] flex items-center justify-center">
                         <p class="text-[#FFB81C] font-semibold text-sm uppercase tracking-wider">Active Research Funding</p>
