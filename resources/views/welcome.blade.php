@@ -29,6 +29,7 @@
             }
         }
     </script>
+    @include('components.smooth-scroll')
 </head>
 <body class="antialiased bg-slate-50 text-slate-900 font-sans selection:bg-[#E51937] selection:text-white" x-data="{ highContrast: false, reduceMotion: false, showInquiryModal: false, showVideoModal: false }" :class="{ 'filter contrast-125': highContrast, 'scroll-smooth': !reduceMotion }">
 

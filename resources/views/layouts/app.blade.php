@@ -35,6 +35,7 @@
                 }
             }
         </script>
+        @include('components.smooth-scroll')
     </head>
     <body class="font-sans antialiased bg-slate-50 text-slate-900 min-h-screen flex flex-col">
         <div class="min-h-screen bg-slate-50 text-slate-900 flex flex-col">

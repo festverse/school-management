@@ -21,6 +21,7 @@
             }
         }
     </script>
+    @include('components.smooth-scroll')
 </head>
 <body class="antialiased bg-slate-50 text-slate-900 font-sans selection:bg-[#E51937] selection:text-white">
     <!-- Auxiliary Top Bar -->

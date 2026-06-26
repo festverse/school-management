@@ -30,6 +30,7 @@
                 }
             }
         </script>
+        @include('components.smooth-scroll')
     </head>
     <body class="font-sans text-slate-900 antialiased bg-[#002855] min-h-screen flex flex-col justify-center items-center p-6 relative overflow-x-hidden overflow-y-auto">
         <!-- Background Overlay / Shield Accent -->
